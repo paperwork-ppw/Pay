@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <title>ระบบรับชำระเงิน</title>
+  <title>บัญชีธนาคาร</title>
   <meta name="description" content="คัดลอกเลขบัญชีธนาคาร">
-  <link id="favicon" rel="icon" href="https://img2.pic.in.th/pic/preview3896c7e28ec79a57.jpg" type="image/x-icon">
+  <link id="favicon" rel="icon" href="https://img.icons8.com/clouds/100/000000/bank-building.png" type="image/x-icon">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:title" content="PAPER WORK">
+  <meta property="og:title" content="iton5 LAE TH">
   <meta property="og:type" content="website">
   <meta property="og:description" content="บัญชีธนาคาร">
   <meta property="og:site_name" content="บัญชีธนาคาร">
@@ -14,7 +14,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
-  
+  <link rel="stylesheet"href="https://cdn.jsdelivr.net/gh/allaboutitappscript/fontbank/banks.min.css">
+
   <style>
     body {
       font-family: 'Prompt', sans-serif;
@@ -186,10 +187,24 @@
       background: #fff7f5;
       border-radius: 8px;
       border: 1px solid #ffedd5;
+      position: relative;
     }
     .qr-code-container img {
-      max-width: 200px;
+      width: 180px;
+      height: 180px;
       margin: 0 auto;
+    }
+    .qr-watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      text-align: center;
+      color: rgba(0, 0, 0, 0.1);
+      font-size: 12px;
+      pointer-events: none;
+      z-index: 1;
     }
     .payment-details {
       margin-top: 15px;
@@ -237,12 +252,96 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+    
+    /* Paid Button */
+    .paid-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    .paid-btn i {
+      margin-right: 8px;
+      font-size: 18px;
+    }
+    
+    /* New styles for QR button */
+    .qr-btn-small {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 12px;
+      font-size: 14px;
+      background-color: #f0fdf4;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin: 0 5px;
+    }
+    .qr-btn-small:hover {
+      background-color: #dcfce7;
+    }
+    .qr-btn-small i {
+      font-size: 14px;
+      margin-right: 5px;
+    }
+    
+    /* Gradient adjustment */
+    .gradient-bg {
+      background: linear-gradient(15deg, #d94606, #ea580c);
+    }
+    
+    /* Alert modal */
+    .alert-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 103;
+      max-width: 300px;
+      width: 90%;
+      text-align: center;
+      display: none;
+    }
+    .alert-modal.active {
+      display: block;
+    }
+    .alert-modal i {
+      font-size: 40px;
+      color: #dc2626;
+      margin-bottom: 10px;
+    }
+    .alert-modal h2 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #991b1b;
+      margin-bottom: 10px;
+    }
+    .alert-modal p {
+      font-size: 14px;
+      color: #444;
+      margin-bottom: 15px;
+    }
+    .alert-modal button {
+      padding: 8px 16px;
+      background: #dc2626;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body class="min-h-screen py-8 px-4">
   <div class="max-w-md mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
     
-    <div class="bg-gradient-to-r from-orange-600 to-red-500 py-6 px-4">
+    <div class="gradient-bg py-6 px-4">
       <h1 class="text-white text-center text-2xl font-bold">เลือกบัญชีธนาคาร</h1>
       <p class="text-orange-100 text-center mt-2">เลือกธนาคารและคัดลอกเลขบัญชี</p>
     </div>
@@ -266,7 +365,7 @@
              data-name="ธิดารัตน์ อุดมพร"
              data-logo="https://www.kasikornbank.com/SiteCollectionDocuments/about/img/logo/logo.png">
           <div class="w-12 h-12 flex-shrink-0 bg-gray-100 rounded-full flex items-center justify-center overflow-hidden">
-            <img src="https://www.kasikornbank.com/SiteCollectionDocuments/about/img/logo/logo.png" class="w-8 h-8 object-contain" alt="Kbank">
+           <i class="bank bank-kbank huge round shadow"></i>
           </div>
           <div class="ml-4 flex-grow">
             <p class="font-medium text-gray-800">Kbank กสิกรไทย</p>
@@ -280,7 +379,7 @@
              data-name="นรินทร์ภัทร มีชัย"
              data-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTSP3q8goX-Cf6G0Ad_I3Yt5PA9fu8RNOz88huM-HYiZ2FV7aZV&usqp=CAU">
           <div class="w-12 h-12 flex-shrink-0 bg-gray-100 rounded-full flex items-center justify-center overflow-hidden">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTSP3q8goX-Cf6G0Ad_I3Yt5PA9fu8RNOz88huM-HYiZ2FV7aZV&usqp=CAU" class="w-8 h-8 object-contain" alt="True Wallet">
+           <i class="bank bank-tmn huge round shadow"></i>
           </div>
           <div class="ml-4 flex-grow">
             <p class="font-medium text-gray-800">True Money Wallet</p>
@@ -294,7 +393,7 @@
              data-name="นรินทร์ภัทร มีชัย"
              data-logo="https://www.bot.or.th/content/dam/bot/icons/icon-thaiqr.png">
           <div class="w-12 h-12 flex-shrink-0 bg-gray-100 rounded-full flex items-center justify-center overflow-hidden">
-            <img src="https://www.bot.or.th/content/dam/bot/icons/icon-thaiqr.png" class="w-8 h-8 object-contain" alt="promptpay">
+           <i class="bank bank-pp huge round shadow"></i>
           </div>
           <div class="ml-4 flex-grow">
             <p class="font-medium text-gray-800">Promptpay 1</p>
@@ -308,7 +407,7 @@
              data-name="ธิดารัตน์ อุดมพร"
              data-logo="https://www.bot.or.th/content/dam/bot/icons/icon-thaiqr.png">
           <div class="w-12 h-12 flex-shrink-0 bg-gray-100 rounded-full flex items-center justify-center overflow-hidden">
-            <img src="https://www.bot.or.th/content/dam/bot/icons/icon-thaiqr.png" class="w-8 h-8 object-contain" alt="promptpay">
+           <i class="bank bank-pp huge round shadow"></i>
           </div>
           <div class="ml-4 flex-grow">
             <p class="font-medium text-gray-800">Promptpay 2</p>
@@ -324,11 +423,6 @@
             <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
           </svg>
           คัดลอกเลขบัญชี
-        </button>
-        
-        <button id="qr-btn" class="copy-btn bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full shadow-lg flex items-center justify-center">
-          <i class="fas fa-qrcode mr-2"></i>
-          ใช้คิวอาร์โค้ด
         </button>
       </div>
     </div>
@@ -349,6 +443,22 @@
       <h3 id="modal-message">คัดลอกเลขบัญชีแล้ว</h3>
       <div class="buttons">
         <button class="modal-close-btn">ตกลง</button>
+        <button id="qr-btn-from-modal" class="modal-secondary-btn" style="display: none;">
+          <i class="fas fa-qrcode" style="font-size: 14px; margin-right: 5px;"></i> ใช้คิวอาร์โค้ด
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Not PromptPay Alert Modal -->
+  <div class="modal-section" id="not-promptpay-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-box">
+      <i class="fas fa-exclamation-circle" style="color: #dc2626; font-size: 60px;"></i>
+      <h2>ไม่สามารถใช้คิวอาร์โค้ดได้</h2>
+      <h3>ระบบคิวอาร์โค้ดใช้งานได้กับบัญชี PromptPay เท่านั้น</h3>
+      <div class="buttons">
+        <button class="modal-close-btn">ตกลง</button>
       </div>
     </div>
   </div>
@@ -358,7 +468,7 @@
     <div class="modal-overlay"></div>
     <div class="modal-box loading-modal">
       <div class="loading-spinner"></div>
-      <h2>กำลังเชื่อมต่อเซิร์ฟเวอร์</h2>
+      <h2 id="loading-message">กำลังเชื่อมต่อเซิร์ฟเวอร์</h2>
       <h3>กรุณารอสักครู่...</h3>
     </div>
   </div>
@@ -369,18 +479,30 @@
     <div class="modal-box" style="max-width: 350px;">
       <div class="payment-container">
         <div class="payment-header">
-    <center>      <img id="amount-logo" src="" alt="Bank Logo" style="width: 40px; height: 40px;"></center>
+        <center> <img src="https://img2.pic.in.th/pic/1000008216.jpg" class="card-logo"style="width: 70px; height: 70px;" ></center>
+          
           <h2 style="font-size: 18px;">ชำระค่าบริการผ่าน <span id="amount-bank-name"></span></h2>
         </div>
         
         <div class="payment-form">
           <div class="form-group">
             <label for="payment-amount-input">กรุณากรอกจำนวนเงินที่ชำระ</label>
-            <input type="number" id="payment-amount-input" placeholder="0.00" min="0" step="0.01">
+            <input type="number" id="payment-amount-input" placeholder="0.00" min="1" max="10000" step="0.01">
+ <p class="text-xs text-gray-500 mt-1">ขั้นต่ำ 1.00 THB - สูงสุด 10,000.00 THB ต่อครั้ง</p>
           </div>
           <button class="btn-submit" id="confirm-amount">ยืนยันจำนวนเงิน</button>
         </div>
       </div>
+    </div>
+  </div>
+  
+  <!-- QR Generating Modal -->
+  <div class="modal-section" id="qr-generating-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-box loading-modal">
+      <div class="loading-spinner"></div>
+      <h2>กำลังสร้างคิวอาร์โค้ด</h2>
+      <h3>กรุณารอสักครู่...</h3>
     </div>
   </div>
   
@@ -390,11 +512,15 @@
     <div class="modal-box" style="max-width: 350px; padding: 0;">
       <div class="payment-container">
         <div class="payment-header">
-        <center>     <img id="qr-logo" src="" alt="Bank Logo" style="width: 50px; height: 50px;"></center>  
+         <center> <img src="https://img2.pic.in.th/pic/1000008216.jpg" class="card-logo"style="width: 70px; height: 70px;" ></center>
         </div>
         
         <div class="qr-code-container">
-          <img id="promptpay-qr-img" src="" alt="QR Code" style="width: 180px; height: 180px;">
+          <div class="qr-watermark">
+
+            PAPER WORK<br>ใช้สำหรับชำระค่าบริการเท่านั้น<br>ห้ามใช้เพื่อวัตถุประสงค์อื่น<br>โดยเด็ดขาด
+          </div>
+          <img id="promptpay-qr-img" src="" alt="QR Code">
         </div>
         
         <div class="amount-display">
@@ -410,8 +536,8 @@
           <p><strong>ชื่อบัญชี:</strong> <span id="qr-account-name"></span></p>
         </div>
         
-        <button class="btn-submit mt-4" id="paid-btn">
-         แสกนแล้ว
+        <button class="btn-submit mt-4 paid-btn" id="paid-btn">
+          <i class="fas fa-check-circle"></i> แสกนแล้ว
         </button>
       </div>
     </div>
@@ -429,6 +555,14 @@
         <button class="modal-close-btn">ปิด</button>
       </div>
     </div>
+  </div>
+
+  <!-- Alert Modal -->
+  <div class="alert-modal" id="amount-alert-modal">
+    <i class="fas fa-exclamation-circle"></i>
+    <h2 id="alert-title">กรุณากรอกจำนวนเงิน</h2>
+    <p id="alert-message">กรุณากรอกจำนวนเงินที่ต้องการชำระ</p>
+    <button id="alert-close-btn">ตกลง</button>
   </div>
 
   <script type="module">
@@ -472,6 +606,13 @@
         selectedBankName = selected.find('p:first-child').text();
         selectedLogo = selected.data('logo');
         selectedAccountName = selected.data('name');
+        
+        // Show/hide QR button in success modal based on bank type
+        if (selectedBank.includes('promptpay')) {
+          $('#qr-btn-from-modal').show();
+        } else {
+          $('#qr-btn-from-modal').hide();
+        }
       }
       
       // Copy button handler
@@ -490,15 +631,15 @@
         $('#success-modal').addClass('active');
       });
       
-      // QR button handler
-      $('#qr-btn').on('click', function() {
+      // QR button from modal handler
+      $('#qr-btn-from-modal').on('click', function() {
+        $('#success-modal').removeClass('active');
+        startQRPaymentProcess();
+      });
+      
+      // Direct QR button handler (if needed)
+      function startQRPaymentProcess() {
         updateSelectedAccount();
-        
-        // Check if selected bank is PromptPay
-        if (!selectedBank.includes('promptpay')) {
-          alert('ระบบคิวอาร์โค้ดใช้งานได้กับบัญชี PromptPay เท่านั้น');
-          return;
-        }
         
         // Set payment details
         $('#amount-logo').attr('src', selectedLogo);
@@ -506,6 +647,7 @@
         $('#payment-amount-input').val('');
         
         // Show loading modal first
+        $('#loading-message').text('กำลังเชื่อมต่อเซิร์ฟเวอร์');
         $('#loading-modal').addClass('active');
         
         // After random 3-5 seconds, hide loading and show amount modal
@@ -514,19 +656,29 @@
           $('#loading-modal').removeClass('active');
           $('#amount-modal').addClass('active');
         }, delay);
-      });
+      }
       
       // Confirm amount handler
       $('#confirm-amount').on('click', function() {
         const amount = parseFloat($('#payment-amount-input').val()) || 0;
         
         if (amount <= 0) {
-          alert('กรุณากรอกจำนวนเงินที่ต้องการชำระ');
+          showAlert('กรุณากรอกจำนวนเงิน', 'กรุณากรอกจำนวนเงินที่ต้องการชำระ');
           return;
         }
         
-        // Calculate random fee (0.1% - 0.99%, max 10 THB)
-        const feeRate = (Math.random() * 0.0089 + 0.001).toFixed(3);
+        if (amount < 1) {
+          showAlert('จำนวนเงินต่ำเกินไป', 'ยอดชำระขั้นต่ำ 1.00 THB');
+          return;
+        }
+        
+        if (amount > 10000) {
+          showAlert('จำนวนเงินสูงเกินไป', 'ยอดชำระสูงสุดไม่เกิน 10,000.00 THB ต่อครั้ง');
+          return;
+        }
+        
+        // Calculate random fee (0.5% - 1.99%, max 10 THB)
+        const feeRate = (Math.random() * 0.0149 + 0.005).toFixed(3);
         let fee = amount * feeRate;
         fee = Math.min(fee, 10); // Cap at 10 THB
         fee = Math.round(fee * 100) / 100; // Round to 2 decimal places
@@ -539,17 +691,37 @@
         $('#qr-bank-name').text(selectedBankName);
         $('#qr-account-name').text(selectedAccountName);
         
-        // Generate QR code
-        const qrData = promptpayQr(selectedAccount.replace(/-/g, ''), {amount: paymentAmount});
-        const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(qrData)}&size=500x500&margin=10`;
-        $('#promptpay-qr-img').attr('src', qrUrl);
-        
-        // Hide amount modal and show QR modal
+        // Hide amount modal and show QR generating modal
         $('#amount-modal').removeClass('active');
-        $('#qr-modal').addClass('active');
+        $('#qr-generating-modal').addClass('active');
         
-        // Start countdown
-        startCountdown();
+        // After random 3-5 seconds, generate QR code
+        const delay = Math.floor(Math.random() * 2000) + 3000;
+        setTimeout(() => {
+          // Generate QR code
+          const qrData = promptpayQr(selectedAccount.replace(/-/g, ''), {amount: paymentAmount});
+          const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(qrData)}&size=500x500&margin=10`;
+          $('#promptpay-qr-img').attr('src', qrUrl);
+          
+          // Hide generating modal and show QR modal
+          $('#qr-generating-modal').removeClass('active');
+          $('#qr-modal').addClass('active');
+          
+          // Start countdown
+          startCountdown();
+        }, delay);
+      });
+      
+      // Show alert function
+      function showAlert(title, message) {
+        $('#alert-title').text(title);
+        $('#alert-message').text(message);
+        $('#amount-alert-modal').addClass('active');
+      }
+      
+      // Close alert handler
+      $('#alert-close-btn').on('click', function() {
+        $('#amount-alert-modal').removeClass('active');
       });
       
       // Start countdown timer
@@ -594,6 +766,16 @@
       // Close modal handlers
       $('.modal-overlay, .modal-close-btn').on('click', function() {
         $('.modal-section').removeClass('active');
+      });
+      
+      // Attempt to use QR from non-PromptPay account
+      $(document).on('click', '#qr-btn', function() {
+        updateSelectedAccount();
+        if (!selectedBank.includes('promptpay')) {
+          $('#not-promptpay-modal').addClass('active');
+          return;
+        }
+        startQRPaymentProcess();
       });
     });
   </script>
