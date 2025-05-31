@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <title>บัญชีธนาคาร</title>
+  <title>บัญชีธนาคารชำระเงิน</title>
   <meta name="description" content="คัดลอกเลขบัญชีธนาคาร">
   <link id="favicon" rel="icon" href="https://img.icons8.com/clouds/100/000000/bank-building.png" type="image/x-icon">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:title" content="iton5 LAE TH">
+  <meta property="og:title" content="PAPER WORK บริการชำระเงินแบบออนไลน์">
   <meta property="og:type" content="website">
   <meta property="og:description" content="บัญชีธนาคาร">
   <meta property="og:site_name" content="บัญชีธนาคาร">
@@ -444,7 +444,7 @@
       <div class="buttons">
         <button class="modal-close-btn">ตกลง</button>
         <button id="qr-btn-from-modal" class="modal-secondary-btn" style="display: none;">
-          <i class="fas fa-qrcode" style="font-size: 14px; margin-right: 5px;"></i> ใช้คิวอาร์โค้ด
+          <i class="fas fa-qrcode" style="font-size: 7px; margin-right: 5px;"></i> ใช้คิวอาร์โค้ด
         </button>
       </div>
     </div>
@@ -667,8 +667,8 @@
           return;
         }
         
-        if (amount < 1) {
-          showAlert('จำนวนเงินต่ำเกินไป', 'ยอดชำระขั้นต่ำ 1.00 THB');
+        if (amount < 10) {
+          showAlert('จำนวนเงินต่ำเกินไป', 'ยอดชำระขั้นต่ำ 10.00 THB');
           return;
         }
         
