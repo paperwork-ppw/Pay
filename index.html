@@ -20,6 +20,10 @@
     body {
       font-family: 'Prompt', sans-serif;
       background-color: #fff7f5;
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
     }
     .bank-option {
       transition: all 0.3s ease;
@@ -201,10 +205,12 @@
       transform: translate(-50%, -50%);
       width: 100%;
       text-align: center;
-      color: rgba(0, 0, 0, 0.1);
-      font-size: 12px;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 14px;
+      font-weight: bold;
       pointer-events: none;
       z-index: 1;
+      text-shadow: 0 0 5px rgba(255,255,255,0.8);
     }
     .payment-details {
       margin-top: 15px;
@@ -336,233 +342,315 @@
       border-radius: 6px;
       cursor: pointer;
     }
+    
+    /* Security styles */
+    .security-check {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Prompt', sans-serif;
+    }
+    .security-check h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #dc2626;
+    }
+    .security-check p {
+      font-size: 16px;
+      margin-bottom: 30px;
+      text-align: center;
+      max-width: 80%;
+    }
+    .security-check button {
+      padding: 10px 20px;
+      background-color: #ea580c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    /* Security alert notification */
+    .security-alert {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #dc2626;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      animation: slideUp 0.3s ease-out;
+    }
+    
+    .security-alert i {
+      margin-right: 10px;
+      font-size: 20px;
+    }
+    
+    @keyframes slideUp {
+      from { bottom: -50px; opacity: 0; }
+      to { bottom: 20px; opacity: 1; }
+    }
+    
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
   </style>
 </head>
 <body class="min-h-screen py-8 px-4">
-  <div class="max-w-md mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
-    
-    <div class="gradient-bg py-6 px-4">
-      <h1 class="text-white text-center text-2xl font-bold">เลือกบัญชีธนาคาร</h1>
-      <p class="text-orange-100 text-center mt-2">เลือกธนาคารและคัดลอกเลขบัญชี</p>
-    </div>
-    
-    <div class="bg-amber-50 p-4 border-b border-amber-100">
-      <div class="flex items-center justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
-        </svg>
-        <p class="text-amber-800">
-          ประกาศ <span class="font-bold">โปรดตรวจสอบ ชื่อ-นามสกุล ก่อนทำรายการ</span>  
-        </p>
-      </div>
-    </div>
-    
-    <div class="p-6">
-      <div class="space-y-4">
-        <div class="bank-option p-3 border rounded-lg flex items-center cursor-pointer" 
-             data-account="201-2-78808-0" 
-             data-bank="kbank"
-             data-name="ธิดารัตน์ อุดมพร"
-             data-logo="https://www.kasikornbank.com/SiteCollectionDocuments/about/img/logo/logo.png">
-          <div class="w-12 h-12 flex-shrink-0 bg-gray-100 rounded-full flex items-center justify-center overflow-hidden">
-           <i class="bank bank-kbank huge round shadow"></i>
-          </div>
-          <div class="ml-4 flex-grow">
-            <p class="font-medium text-gray-800">Kbank กสิกรไทย</p>
-            <p class="text-gray-600 font-bold">201-X-XX808-0</p>
-          </div>
-        </div>
-        
-        <div class="bank-option p-3 border rounded-lg flex items-center cursor-pointer" 
-             data-account="062-180-3299" 
-             data-bank="truemoney"
-             data-name="นรินทร์ภัทร มีชัย"
-             data-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTSP3q8goX-Cf6G0Ad_I3Yt5PA9fu8RNOz88huM-HYiZ2FV7aZV&usqp=CAU">
-          <div class="w-12 h-12 flex-shrink-0 bg-gray-100 rounded-full flex items-center justify-center overflow-hidden">
-           <i class="bank bank-tmn huge round shadow"></i>
-          </div>
-          <div class="ml-4 flex-grow">
-            <p class="font-medium text-gray-800">True Money Wallet</p>
-            <p class="text-gray-600 font-bold">062-XXX-3299</p>
-          </div>
-        </div>
-        
-        <div class="bank-option p-3 border rounded-lg flex items-center cursor-pointer" 
-             data-account="140-000-621-803-299" 
-             data-bank="promptpay1"
-             data-name="นรินทร์ภัทร มีชัย"
-             data-logo="https://www.bot.or.th/content/dam/bot/icons/icon-thaiqr.png">
-          <div class="w-12 h-12 flex-shrink-0 bg-gray-100 rounded-full flex items-center justify-center overflow-hidden">
-           <i class="bank bank-pp huge round shadow"></i>
-          </div>
-          <div class="ml-4 flex-grow">
-            <p class="font-medium text-gray-800">Promptpay 1</p>
-            <p class="text-gray-600 font-bold">140-XXX-3299</p>
-          </div>
-        </div>
-        
-        <div class="bank-option p-3 border rounded-lg flex items-center cursor-pointer" 
-             data-account="00499-920-200-6655" 
-             data-bank="promptpay2"
-             data-name="ธิดารัตน์ อุดมพร"
-             data-logo="https://www.bot.or.th/content/dam/bot/icons/icon-thaiqr.png">
-          <div class="w-12 h-12 flex-shrink-0 bg-gray-100 rounded-full flex items-center justify-center overflow-hidden">
-           <i class="bank bank-pp huge round shadow"></i>
-          </div>
-          <div class="ml-4 flex-grow">
-            <p class="font-medium text-gray-800">Promptpay 2</p>
-            <p class="text-gray-600 font-bold">004-XXX-6655</p>
-          </div>
-        </div>
-      </div>
+  <!-- Security Check Screen -->
+  <div class="security-check" id="security-check">
+    <h1>กำลังตรวจสอบความปลอดภัย</h1>
+    <p>กรุณารอสักครู่ ระบบกำลังตรวจสอบความปลอดภัยของเบราว์เซอร์...</p>
+    <button id="proceed-btn" style="display: none;">ดำเนินการต่อ</button>
+  </div>
 
-      <div class="mt-8 flex flex-col space-y-4">
-        <button id="copy-btn" class="copy-btn bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-full shadow-lg flex items-center justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
-            <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
+  <!-- Security Alert Notification -->
+  <div id="security-alert" class="security-alert" style="display: none;">
+    <i class="fas fa-shield-alt"></i>
+    <span id="security-alert-message"></span>
+  </div>
+
+  <!-- Main Content (hidden initially) -->
+  <div id="main-content" style="display: none;">
+    <div class="max-w-md mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+      
+      <div class="gradient-bg py-6 px-4">
+        <h1 class="text-white text-center text-2xl font-bold">เลือกบัญชีธนาคาร</h1>
+        <p class="text-orange-100 text-center mt-2">เลือกธนาคารและคัดลอกเลขบัญชี</p>
+      </div>
+      
+      <div class="bg-amber-50 p-4 border-b border-amber-100">
+        <div class="flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
           </svg>
-          คัดลอกเลขบัญชี
-        </button>
+          <p class="text-amber-800">
+            ประกาศ <span class="font-bold">โปรดตรวจสอบ ชื่อ-นามสกุล ก่อนทำรายการ</span>  
+          </p>
+        </div>
+      </div>
+      
+      <div class="p-6">
+        <div class="space-y-4">
+          <div class="bank-option p-3 border rounded-lg flex items-center cursor-pointer" 
+               data-account="201-2-78808-0" 
+               data-bank="kbank"
+               data-name="ธิดารัตน์ อุดมพร"
+               data-logo="https://www.kasikornbank.com/SiteCollectionDocuments/about/img/logo/logo.png">
+            <div class="w-12 h-12 flex-shrink-0 bg-gray-100 rounded-full flex items-center justify-center overflow-hidden">
+             <i class="bank bank-kbank huge round shadow"></i>
+            </div>
+            <div class="ml-4 flex-grow">
+              <p class="font-medium text-gray-800">Kbank กสิกรไทย</p>
+              <p class="text-gray-600 font-bold">201-X-XX808-0</p>
+            </div>
+          </div>
+          
+          <div class="bank-option p-3 border rounded-lg flex items-center cursor-pointer" 
+               data-account="062-180-3299" 
+               data-bank="truemoney"
+               data-name="นรินทร์ภัทร มีชัย"
+               data-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTSP3q8goX-Cf6G0Ad_I3Yt5PA9fu8RNOz88huM-HYiZ2FV7aZV&usqp=CAU">
+            <div class="w-12 h-12 flex-shrink-0 bg-gray-100 rounded-full flex items-center justify-center overflow-hidden">
+             <i class="bank bank-tmn huge round shadow"></i>
+            </div>
+            <div class="ml-4 flex-grow">
+              <p class="font-medium text-gray-800">True Money Wallet</p>
+              <p class="text-gray-600 font-bold">062-XXX-3299</p>
+            </div>
+          </div>
+          
+          <div class="bank-option p-3 border rounded-lg flex items-center cursor-pointer" 
+               data-account="140-000-621-803-299" 
+               data-bank="promptpay1"
+               data-name="นรินทร์ภัทร มีชัย"
+               data-logo="https://www.bot.or.th/content/dam/bot/icons/icon-thaiqr.png">
+            <div class="w-12 h-12 flex-shrink-0 bg-gray-100 rounded-full flex items-center justify-center overflow-hidden">
+             <i class="bank bank-pp huge round shadow"></i>
+            </div>
+            <div class="ml-4 flex-grow">
+              <p class="font-medium text-gray-800">Promptpay 1</p>
+              <p class="text-gray-600 font-bold">140-XXX-3299</p>
+            </div>
+          </div>
+          
+          <div class="bank-option p-3 border rounded-lg flex items-center cursor-pointer" 
+               data-account="00499-920-200-6655" 
+               data-bank="promptpay2"
+               data-name="ธิดารัตน์ อุดมพร"
+               data-logo="https://www.bot.or.th/content/dam/bot/icons/icon-thaiqr.png">
+            <div class="w-12 h-12 flex-shrink-0 bg-gray-100 rounded-full flex items-center justify-center overflow-hidden">
+             <i class="bank bank-pp huge round shadow"></i>
+            </div>
+            <div class="ml-4 flex-grow">
+              <p class="font-medium text-gray-800">Promptpay 2</p>
+              <p class="text-gray-600 font-bold">004-XXX-6655</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-col space-y-4">
+          <button id="copy-btn" class="copy-btn bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-full shadow-lg flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
+              <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
+            </svg>
+            คัดลอกเลขบัญชี
+          </button>
+        </div>
+      </div>
+      
+      <footer class="bg-gray-800 text-white py-4 px-6">
+        <div class="container mx-auto text-center text-sm">
+          <p>PAPER WORK © 2025</p>
+        </div>
+      </footer>
+    </div>
+    
+    <!-- Success Modal Notification -->
+    <div class="modal-section" id="success-modal">
+      <div class="modal-overlay"></div>
+      <div class="modal-box">
+        <i class="fa-regular fa-circle-check"></i>
+        <h2>คัดลอกสำเร็จ</h2>
+        <h3 id="modal-message">คัดลอกเลขบัญชีแล้ว</h3>
+        <div class="buttons">
+          <button class="modal-close-btn">ตกลง</button>
+          <button id="qr-btn-from-modal" class="modal-secondary-btn" style="display: none;">
+           ⛶  ใช้คิวอาร์โค้ด
+          </button>
+        </div>
       </div>
     </div>
     
-    <footer class="bg-gray-800 text-white py-4 px-6">
-      <div class="container mx-auto text-center text-sm">
-        <p>PAPER WORK © 2025</p>
-      </div>
-    </footer>
-  </div>
-  
-  <!-- Success Modal Notification -->
-  <div class="modal-section" id="success-modal">
-    <div class="modal-overlay"></div>
-    <div class="modal-box">
-      <i class="fa-regular fa-circle-check"></i>
-      <h2>คัดลอกสำเร็จ</h2>
-      <h3 id="modal-message">คัดลอกเลขบัญชีแล้ว</h3>
-      <div class="buttons">
-        <button class="modal-close-btn">ตกลง</button>
-        <button id="qr-btn-from-modal" class="modal-secondary-btn" style="display: none;">
-         ⛶  ใช้คิวอาร์โค้ด
-        </button>
+    <!-- Not PromptPay Alert Modal -->
+    <div class="modal-section" id="not-promptpay-modal">
+      <div class="modal-overlay"></div>
+      <div class="modal-box">
+        <i class="fas fa-exclamation-circle" style="color: #dc2626; font-size: 60px;"></i>
+        <h2>ไม่สามารถใช้คิวอาร์โค้ดได้</h2>
+        <h3>ระบบคิวอาร์โค้ดใช้งานได้กับบัญชี PromptPay เท่านั้น</h3>
+        <div class="buttons">
+          <button class="modal-close-btn">ตกลง</button>
+        </div>
       </div>
     </div>
-  </div>
-  
-  <!-- Not PromptPay Alert Modal -->
-  <div class="modal-section" id="not-promptpay-modal">
-    <div class="modal-overlay"></div>
-    <div class="modal-box">
-      <i class="fas fa-exclamation-circle" style="color: #dc2626; font-size: 60px;"></i>
-      <h2>ไม่สามารถใช้คิวอาร์โค้ดได้</h2>
-      <h3>ระบบคิวอาร์โค้ดใช้งานได้กับบัญชี PromptPay เท่านั้น</h3>
-      <div class="buttons">
-        <button class="modal-close-btn">ตกลง</button>
+    
+    <!-- Loading Modal -->
+    <div class="modal-section" id="loading-modal">
+      <div class="modal-overlay"></div>
+      <div class="modal-box loading-modal">
+        <div class="loading-spinner"></div>
+        <h2 id="loading-message">กำลังเชื่อมต่อเซิร์ฟเวอร์</h2>
+        <h3>กรุณารอสักครู่...</h3>
       </div>
     </div>
-  </div>
-  
-  <!-- Loading Modal -->
-  <div class="modal-section" id="loading-modal">
-    <div class="modal-overlay"></div>
-    <div class="modal-box loading-modal">
-      <div class="loading-spinner"></div>
-      <h2 id="loading-message">กำลังเชื่อมต่อเซิร์ฟเวอร์</h2>
-      <h3>กรุณารอสักครู่...</h3>
-    </div>
-  </div>
-  
-  <!-- Amount Input Modal -->
-  <div class="modal-section" id="amount-modal">
-    <div class="modal-overlay"></div>
-    <div class="modal-box" style="max-width: 350px;">
-      <div class="payment-container">
-        <div class="payment-header">
-        <center> <img src="https://img2.pic.in.th/pic/1000008216.jpg" class="card-logo"style="width: 70px; height: 70px;" ></center>
+    
+    <!-- Amount Input Modal -->
+    <div class="modal-section" id="amount-modal">
+      <div class="modal-overlay"></div>
+      <div class="modal-box" style="max-width: 350px;">
+        <div class="payment-container">
+          <div class="payment-header">
+          <center> <img src="https://img2.pic.in.th/pic/1000008216.jpg" class="card-logo"style="width: 70px; height: 70px;" ></center>
+            
+            <h2 style="font-size: 18px;">ชำระค่าบริการผ่าน <span id="amount-bank-name"></span></h2>
+          </div>
           
-          <h2 style="font-size: 18px;">ชำระค่าบริการผ่าน <span id="amount-bank-name"></span></h2>
-        </div>
-        
-        <div class="payment-form">
-          <div class="form-group">
-            <label for="payment-amount-input">กรุณากรอกจำนวนเงินที่ชำระ</label>
-            <input type="number" id="payment-amount-input" placeholder="0.00" min="1" max="10000" step="0.01">
- <p class="text-xs text-gray-500 mt-1">ขั้นต่ำ 10.00 THB - สูงสุด 10,000.00 THB ต่อครั้ง</p>
+          <div class="payment-form">
+            <div class="form-group">
+              <label for="payment-amount-input">กรุณากรอกจำนวนเงินที่ชำระ</label>
+              <input type="number" id="payment-amount-input" placeholder="0.00" min="1" max="10000" step="0.01">
+   <p class="text-xs text-gray-500 mt-1">ขั้นต่ำ 10.00 THB - สูงสุด 10,000.00 THB ต่อครั้ง</p>
+            </div>
+            <button class="btn-submit" id="confirm-amount">ยืนยันจำนวนเงิน</button>
           </div>
-          <button class="btn-submit" id="confirm-amount">ยืนยันจำนวนเงิน</button>
         </div>
       </div>
     </div>
-  </div>
-  
-  <!-- QR Generating Modal -->
-  <div class="modal-section" id="qr-generating-modal">
-    <div class="modal-overlay"></div>
-    <div class="modal-box loading-modal">
-      <div class="loading-spinner"></div>
-      <h2>กำลังสร้างคิวอาร์โค้ด</h2>
-      <h3>กรุณารอสักครู่...</h3>
+    
+    <!-- QR Generating Modal -->
+    <div class="modal-section" id="qr-generating-modal">
+      <div class="modal-overlay"></div>
+      <div class="modal-box loading-modal">
+        <div class="loading-spinner"></div>
+        <h2>กำลังสร้างคิวอาร์โค้ด</h2>
+        <h3>กรุณารอสักครู่...</h3>
+      </div>
     </div>
-  </div>
-  
-  <!-- QR Payment Modal -->
-  <div class="modal-section" id="qr-modal">
-    <div class="modal-overlay"></div>
-    <div class="modal-box" style="max-width: 350px; padding: 0;">
-      <div class="payment-container">
-        <div class="payment-header">
-         <center> <img src="https://img2.pic.in.th/pic/1000008216.jpg" class="card-logo"style="width: 70px; height: 70px;" ></center>
-        </div>
-        
-        <div class="qr-code-container">
-          <div class="qr-watermark">
-
-            PAPER WORK<br>ใช้สำหรับชำระค่าบริการเท่านั้น<br>ห้ามใช้เพื่อวัตถุประสงค์อื่น<br>โดยเด็ดขาด
+    
+    <!-- QR Payment Modal -->
+    <div class="modal-section" id="qr-modal">
+      <div class="modal-overlay"></div>
+      <div class="modal-box" style="max-width: 350px; padding: 0;">
+        <div class="payment-container">
+          <div class="payment-header">
+           <center> <img src="https://img2.pic.in.th/pic/1000008216.jpg" class="card-logo"style="width: 70px; height: 70px;" ></center>
           </div>
-          <img id="promptpay-qr-img" src="" alt="QR Code">
+          
+          <div class="qr-code-container">
+            <div class="qr-watermark">
+              PAPER WORK<br>ใช้สำหรับชำระค่าบริการเท่านั้น<br>ห้ามใช้เพื่อวัตถุประสงค์อื่น<br>โดยเด็ดขาด
+            </div>
+            <img id="promptpay-qr-img" src="" alt="QR Code">
+          </div>
+          
+          <div class="amount-display">
+            จำนวนเงิน: <span id="qr-amount">0.00</span> THB
+          </div>
+          
+          <div class="countdown">
+            โปรดสแกนจ่ายใน <span id="countdown">10:00</span> นาที
+          </div>
+          
+          <div class="payment-details">
+            <p><strong>บัญชี:</strong> <span id="qr-bank-name"></span></p>
+            <p><strong>ชื่อบัญชี:</strong> <span id="qr-account-name"></span></p>
+          </div>
+          
+          <button class="btn-submit mt-4 paid-btn" id="paid-btn">
+            <i class="fas fa-check-circle"></i> แสกนแล้ว
+          </button>
         </div>
-        
-        <div class="amount-display">
-          จำนวนเงิน: <span id="qr-amount">0.00</span> THB
-        </div>
-        
-        <div class="countdown">
-          โปรดสแกนจ่ายใน <span id="countdown">10:00</span> นาที
-        </div>
-        
-        <div class="payment-details">
-          <p><strong>บัญชี:</strong> <span id="qr-bank-name"></span></p>
-          <p><strong>ชื่อบัญชี:</strong> <span id="qr-account-name"></span></p>
-        </div>
-        
-        <button class="btn-submit mt-4 paid-btn" id="paid-btn">
-          <i class="fas fa-check-circle"></i> แสกนแล้ว
-        </button>
       </div>
     </div>
-  </div>
-  
-  <!-- Payment Success Modal -->
-  <div class="modal-section" id="payment-success-modal">
-    <div class="modal-overlay"></div>
-    <div class="modal-box">
-      <i class="fa-regular fa-circle-check" style="color: #16a34a; font-size: 60px;"></i>
-      <h2>สำเร็จ</h2>
-      <h3 id="success-message">คุณได้ทำการชำระยอดเงินจำนวน 0.00 THB สำเร็จ</h3>
-      <p class="text-gray-600 mt-2">กรุณาส่งสลีปให้เจ้าหน้าที่ค่ะ</p>
-      <div class="buttons">
-        <button class="modal-close-btn">ปิด</button>
+    
+    <!-- Payment Success Modal -->
+    <div class="modal-section" id="payment-success-modal">
+      <div class="modal-overlay"></div>
+      <div class="modal-box">
+        <i class="fa-regular fa-circle-check" style="color: #16a34a; font-size: 60px;"></i>
+        <h2>สำเร็จ</h2>
+        <h3 id="success-message">คุณได้ทำการชำระยอดเงินจำนวน 0.00 THB สำเร็จ</h3>
+        <p class="text-gray-600 mt-2">กรุณาส่งสลีปให้เจ้าหน้าที่ค่ะ</p>
+        <div class="buttons">
+          <button class="modal-close-btn">ปิด</button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Alert Modal -->
-  <div class="alert-modal" id="amount-alert-modal">
-    <i class="fas fa-exclamation-circle"></i>
-    <h2 id="alert-title">กรุณากรอกจำนวนเงิน</h2>
-    <p id="alert-message">กรุณากรอกจำนวนเงินที่ต้องการชำระ</p>
-    <button id="alert-close-btn">ตกลง</button>
+    <!-- Alert Modal -->
+    <div class="alert-modal" id="amount-alert-modal">
+      <i class="fas fa-exclamation-circle"></i>
+      <h2 id="alert-title">กรุณากรอกจำนวนเงิน</h2>
+      <p id="alert-message">กรุณากรอกจำนวนเงินที่ต้องการชำระ</p>
+      <button id="alert-close-btn">ตกลง</button>
+    </div>
   </div>
 
   <script type="module">
@@ -572,7 +660,111 @@
   
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
+    // ฟังก์ชันแสดงการแจ้งเตือนการป้องกัน
+    function showSecurityAlert(message) {
+      const alert = document.getElementById('security-alert');
+      const alertMessage = document.getElementById('security-alert-message');
+      
+      alertMessage.textContent = message;
+      alert.style.display = 'flex';
+      
+      // หายไปหลังจาก 3 วินาที
+      setTimeout(() => {
+        alert.style.animation = 'fadeOut 0.5s ease-out';
+        setTimeout(() => {
+          alert.style.display = 'none';
+          alert.style.animation = 'slideUp 0.3s ease-out';
+        }, 500);
+      }, 3000);
+    }
+
+    // ฟังก์ชันตรวจสอบความปลอดภัย
+    function performSecurityCheck() {
+      // ตรวจสอบ Developer Tools
+      const devtools = /./;
+      devtools.toString = function() {
+        document.getElementById('security-check').innerHTML = `
+          <h1 style="color: #dc2626;">ตรวจพบการใช้งานที่ไม่ได้รับอนุญาต</h1>
+          <p>ระบบตรวจพบการเปิดเครื่องมือสำหรับนักพัฒนา (Developer Tools)</p>
+          <p>กรุณาปิดเครื่องมือเหล่านี้และรีเฟรชหน้าเว็บ</p>
+        `;
+        document.getElementById('proceed-btn').style.display = 'none';
+        showSecurityAlert('ระบบตรวจพบการเปิด Developer Tools กรุณาปิดก่อนใช้งาน');
+        return '';
+      };
+      console.log('%c', devtools);
+      
+      // จำลองการตรวจสอบความปลอดภัย
+      setTimeout(() => {
+        document.getElementById('security-check').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+      }, 2000);
+    }
+    
+    // ปิดการใช้งานต่างๆ
+    function disableUserActions() {
+      // ป้องกันคลิกขวา
+      document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        showSecurityAlert('ระบบไม่อนุญาตให้ใช้คลิกขวาบนหน้านี้');
+      });
+      
+      // ป้องกันการเลือกข้อความ
+      document.addEventListener('selectstart', function(e) {
+        e.preventDefault();
+        showSecurityAlert('ระบบไม่อนุญาตให้เลือกข้อความบนหน้านี้');
+      });
+      
+      // ป้องกันการคัดลอก
+      document.addEventListener('copy', function(e) {
+        e.preventDefault();
+        showSecurityAlert('ระบบไม่อนุญาตให้คัดลอกข้อความจากหน้านี้');
+      });
+      
+      // ป้องกันการตัด
+      document.addEventListener('cut', function(e) {
+        e.preventDefault();
+        showSecurityAlert('ระบบไม่อนุญาตให้ตัดข้อความจากหน้านี้');
+      });
+      
+      // ป้องกันปุ่มลัดต่างๆ
+      document.addEventListener('keydown', function(e) {
+        // Disable F12
+        if (e.key === 'F12') {
+          e.preventDefault();
+          showSecurityAlert('ระบบไม่อนุญาตให้ใช้ปุ่ม F12');
+          return false;
+        }
+        
+        // Disable Ctrl+Shift+I
+        if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+          e.preventDefault();
+          showSecurityAlert('ระบบไม่อนุญาตให้เปิด Developer Tools');
+          return false;
+        }
+        
+        // Disable Ctrl+Shift+J
+        if (e.ctrlKey && e.shiftKey && e.key === 'J') {
+          e.preventDefault();
+          showSecurityAlert('ระบบไม่อนุญาตให้เปิด Developer Tools');
+          return false;
+        }
+        
+        // Disable Ctrl+U
+        if (e.ctrlKey && e.key === 'U') {
+          e.preventDefault();
+          showSecurityAlert('ระบบไม่อนุญาตให้ดู Source Code');
+          return false;
+        }
+      });
+    }
+
+    // เริ่มต้นการทำงาน
     $(document).ready(() => {
+      // ตรวจสอบความปลอดภัย
+      performSecurityCheck();
+      disableUserActions();
+      
       // Bank selection variables
       let selectedAccount = "";
       let selectedBank = "";
@@ -673,14 +865,14 @@
         }
         
         if (amount > 10000) {
-          showAlert('จำนวนเงินสูงเกินไป', 'ยอดชำระสูงสุดไม่เกิน 10,000.00 THB ต่อครั้ง');
+          showAlert('จำนวนเงินสูงเกินไป', 'ยอดชำระสูงสุดไม่เกิน 10,000.00 THB ต่อครั้ง\nค่าธรรมเนียมสูงสุด 200.00 THB');
           return;
         }
         
-        // Calculate random fee (0.5% - 1.99%, max 10 THB)
+        // Calculate random fee (0.5% - 1.99%, max 200 THB)
         const feeRate = (Math.random() * 0.0149 + 0.005).toFixed(3);
         let fee = amount * feeRate;
-        fee = Math.min(fee, 10); // Cap at 10 THB
+        fee = Math.min(fee, 200); // Cap at 200 THB
         fee = Math.round(fee * 100) / 100; // Round to 2 decimal places
         
         paymentAmount = amount + fee;
@@ -698,9 +890,10 @@
         // After random 3-5 seconds, generate QR code
         const delay = Math.floor(Math.random() * 2000) + 3000;
         setTimeout(() => {
-          // Generate QR code
+          // Generate QR code with logo
           const qrData = promptpayQr(selectedAccount.replace(/-/g, ''), {amount: paymentAmount});
-          const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(qrData)}&size=500x500&margin=10`;
+          const logoUrl = 'https://img2.pic.in.th/pic/1000008216.jpg';
+          const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(qrData)}&size=500x500&margin=10&logo=${encodeURIComponent(logoUrl)}`;
           $('#promptpay-qr-img').attr('src', qrUrl);
           
           // Hide generating modal and show QR modal
