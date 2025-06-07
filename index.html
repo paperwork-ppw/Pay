@@ -1,5 +1,1180 @@
-<script>
-<!--
-document.write(unescape("%3C%21DOCTYPE%20html%3E%0A%3Chtml%20lang%3D%22th%22%3E%0A%3Chead%3E%0A%20%20%3Ctitle%3EOnline%20Pay%3C/title%3E%0A%20%20%3Cmeta%20name%3D%22description%22%20content%3D%22%u0E04%u0E31%u0E14%u0E25%u0E2D%u0E01%u0E40%u0E25%u0E02%u0E1A%u0E31%u0E0D%u0E0A%u0E35%u0E18%u0E19%u0E32%u0E04%u0E32%u0E23%22%3E%0A%20%20%3Clink%20id%3D%22favicon%22%20rel%3D%22icon%22%20href%3D%22https%3A//img.icons8.com/clouds/100/000000/bank-building.png%22%20type%3D%22image/x-icon%22%3E%0A%20%20%3Cmeta%20charset%3D%22utf-8%22%3E%0A%20%20%3Cmeta%20name%3D%22viewport%22%20content%3D%22width%3Ddevice-width%2C%20initial-scale%3D1%22%3E%0A%20%20%3Cmeta%20property%3D%22og%3Atitle%22%20content%3D%22PAPER%20WORK%20%u0E1A%u0E23%u0E34%u0E01%u0E32%u0E23%u0E0A%u0E33%u0E23%u0E30%u0E40%u0E07%u0E34%u0E19%u0E41%u0E1A%u0E1A%u0E2D%u0E2D%u0E19%u0E44%u0E25%u0E19%u0E4C%22%3E%0A%20%20%3Cmeta%20property%3D%22og%3Atype%22%20content%3D%22website%22%3E%0A%20%20%3Cmeta%20property%3D%22og%3Adescription%22%20content%3D%22%u0E1A%u0E31%u0E0D%u0E0A%u0E35%u0E18%u0E19%u0E32%u0E04%u0E32%u0E23%22%3E%0A%20%20%3Cmeta%20property%3D%22og%3Asite_name%22%20content%3D%22%u0E1A%u0E31%u0E0D%u0E0A%u0E35%u0E18%u0E19%u0E32%u0E04%u0E32%u0E23%22%3E%0A%20%20%3Cmeta%20property%3D%22og%3Aimage%22%20content%3D%22https%3A//img.icons8.com/clouds/100/000000/bank-building.png%22%3E%0A%20%20%3Cscript%20src%3D%22https%3A//cdn.tailwindcss.com%22%3E%3C/script%3E%0A%20%20%3Clink%20href%3D%22https%3A//fonts.googleapis.com/css2%3Ffamily%3DPrompt%3Awght@300%3B400%3B500%3B600%26amp%3Bdisplay%3Dswap%22%20rel%3D%22stylesheet%22%3E%0A%20%20%3Clink%20rel%3D%22stylesheet%22%20href%3D%22https%3A//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css%22/%3E%0A%20%20%0A%20%20%3Cstyle%3E%0A%20%20%20%20body%20%7B%0A%20%20%20%20%20%20font-family%3A%20%27Prompt%27%2C%20sans-serif%3B%0A%20%20%20%20%20%20background-color%3A%20%23fff7f5%3B%0A%20%20%20%20%20%20user-select%3A%20none%3B%0A%20%20%20%20%20%20-webkit-user-select%3A%20none%3B%0A%20%20%20%20%20%20-moz-user-select%3A%20none%3B%0A%20%20%20%20%20%20-ms-user-select%3A%20none%3B%0A%20%20%20%20%7D%0A%20%20%20%20.bank-option%20%7B%0A%20%20%20%20%20%20transition%3A%20all%200.3s%20ease%3B%0A%20%20%20%20%7D%0A%20%20%20%20.bank-option%3Ahover%20%7B%0A%20%20%20%20%20%20transform%3A%20translateY%28-2px%29%3B%0A%20%20%20%20%20%20box-shadow%3A%200%2010px%2015px%20-3px%20rgba%280%2C%200%2C%200%2C%200.1%29%2C%200%204px%206px%20-2px%20rgba%280%2C%200%2C%200%2C%200.05%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20.bank-option.selected%20%7B%0A%20%20%20%20%20%20border-color%3A%20%23ea580c%3B%0A%20%20%20%20%20%20background-color%3A%20%23ffedd5%3B%0A%20%20%20%20%7D%0A%20%20%20%20.copy-btn%20%7B%0A%20%20%20%20%20%20transition%3A%20all%200.2s%20ease%3B%0A%20%20%20%20%7D%0A%20%20%20%20.copy-btn%3Ahover%20%7B%0A%20%20%20%20%20%20transform%3A%20scale%281.05%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20.copy-btn%3Aactive%20%7B%0A%20%20%20%20%20%20transform%3A%20scale%280.98%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20%0A%20%20%20%20/*%20Modal%20Styles%20*/%0A%20%20%20%20.modal-section%20%7B%0A%20%20%20%20%20%20position%3A%20fixed%3B%0A%20%20%20%20%20%20height%3A%20100%25%3B%0A%20%20%20%20%20%20width%3A%20100%25%3B%0A%20%20%20%20%20%20z-index%3A%20100%3B%0A%20%20%20%20%20%20display%3A%20none%3B%0A%20%20%20%20%7D%0A%20%20%20%20.modal-section.active%20%7B%0A%20%20%20%20%20%20display%3A%20block%3B%0A%20%20%20%20%7D%0A%20%20%20%20.modal-overlay%20%7B%0A%20%20%20%20%20%20position%3A%20fixed%3B%0A%20%20%20%20%20%20height%3A%20100%25%3B%0A%20%20%20%20%20%20width%3A%20100%25%3B%0A%20%20%20%20%20%20background%3A%20rgba%280%2C%200%2C%200%2C%200.5%29%3B%0A%20%20%20%20%20%20z-index%3A%20101%3B%0A%20%20%20%20%7D%0A%20%20%20%20.modal-box%20%7B%0A%20%20%20%20%20%20position%3A%20fixed%3B%0A%20%20%20%20%20%20left%3A%2050%25%3B%0A%20%20%20%20%20%20top%3A%2050%25%3B%0A%20%20%20%20%20%20transform%3A%20translate%28-50%25%2C%20-50%25%29%3B%0A%20%20%20%20%20%20max-width%3A%20400px%3B%0A%20%20%20%20%20%20width%3A%2090%25%3B%0A%20%20%20%20%20%20padding%3A%2030px%2020px%3B%0A%20%20%20%20%20%20border-radius%3A%2016px%3B%0A%20%20%20%20%20%20background-color%3A%20%23fff%3B%0A%20%20%20%20%20%20box-shadow%3A%200%2010px%2025px%20rgba%280%2C%200%2C%200%2C%200.2%29%3B%0A%20%20%20%20%20%20z-index%3A%20102%3B%0A%20%20%20%20%20%20text-align%3A%20center%3B%0A%20%20%20%20%7D%0A%20%20%20%20.modal-box%20i%20%7B%0A%20%20%20%20%20%20font-size%3A%2060px%3B%0A%20%20%20%20%20%20color%3A%20%2316a34a%3B%0A%20%20%20%20%20%20margin-bottom%3A%2015px%3B%0A%20%20%20%20%7D%0A%20%20%20%20.modal-box%20h2%20%7B%0A%20%20%20%20%20%20font-size%3A%2022px%3B%0A%20%20%20%20%20%20font-weight%3A%20600%3B%0A%20%20%20%20%20%20color%3A%20%23166534%3B%0A%20%20%20%20%20%20margin-bottom%3A%2010px%3B%0A%20%20%20%20%7D%0A%20%20%20%20.modal-box%20h3%20%7B%0A%20%20%20%20%20%20font-size%3A%2016px%3B%0A%20%20%20%20%20%20font-weight%3A%20400%3B%0A%20%20%20%20%20%20color%3A%20%23333%3B%0A%20%20%20%20%20%20margin-bottom%3A%2020px%3B%0A%20%20%20%20%7D%0A%20%20%20%20.modal-box%20.buttons%20%7B%0A%20%20%20%20%20%20display%3A%20flex%3B%0A%20%20%20%20%20%20justify-content%3A%20center%3B%0A%20%20%20%20%20%20gap%3A%2010px%3B%0A%20%20%20%20%20%20margin-top%3A%2020px%3B%0A%20%20%20%20%7D%0A%20%20%20%20.modal-box%20button%20%7B%0A%20%20%20%20%20%20font-size%3A%2014px%3B%0A%20%20%20%20%20%20padding%3A%208px%2020px%3B%0A%20%20%20%20%20%20border-radius%3A%208px%3B%0A%20%20%20%20%20%20cursor%3A%20pointer%3B%0A%20%20%20%20%20%20transition%3A%20all%200.2s%3B%0A%20%20%20%20%7D%0A%20%20%20%20.modal-close-btn%20%7B%0A%20%20%20%20%20%20background%3A%20%2316a34a%3B%0A%20%20%20%20%20%20color%3A%20white%3B%0A%20%20%20%20%20%20border%3A%20none%3B%0A%20%20%20%20%7D%0A%20%20%20%20.modal-close-btn%3Ahover%20%7B%0A%20%20%20%20%20%20background%3A%20%2315803d%3B%0A%20%20%20%20%7D%0A%20%20%20%20.modal-secondary-btn%20%7B%0A%20%20%20%20%20%20background%3A%20%23f0fdf4%3B%0A%20%20%20%20%20%20color%3A%20%23166534%3B%0A%20%20%20%20%20%20border%3A%201px%20solid%20%23bbf7d0%3B%0A%20%20%20%20%7D%0A%20%20%20%20.modal-secondary-btn%3Ahover%20%7B%0A%20%20%20%20%20%20background%3A%20%23dcfce7%3B%0A%20%20%20%20%7D%0A%20%20%20%20%0A%20%20%20%20/*%20QR%20Payment%20Page%20*/%0A%20%20%20%20.payment-container%20%7B%0A%20%20%20%20%20%20max-width%3A%20350px%3B%0A%20%20%20%20%20%20margin%3A%2020px%20auto%3B%0A%20%20%20%20%20%20padding%3A%2020px%3B%0A%20%20%20%20%20%20background%3A%20white%3B%0A%20%20%20%20%20%20border-radius%3A%2012px%3B%0A%20%20%20%20%20%20box-shadow%3A%200%204px%2012px%20rgba%280%2C%200%2C%200%2C%200.1%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20.payment-header%20%7B%0A%20%20%20%20%20%20text-align%3A%20center%3B%0A%20%20%20%20%20%20margin-bottom%3A%2015px%3B%0A%20%20%20%20%7D%0A%20%20%20%20.payment-header%20img%20%7B%0A%20%20%20%20%20%20width%3A%2050px%3B%0A%20%20%20%20%20%20height%3A%2050px%3B%0A%20%20%20%20%20%20object-fit%3A%20contain%3B%0A%20%20%20%20%20%20margin-bottom%3A%2010px%3B%0A%20%20%20%20%7D%0A%20%20%20%20.payment-form%20%7B%0A%20%20%20%20%20%20margin-bottom%3A%2015px%3B%0A%20%20%20%20%7D%0A%20%20%20%20.form-group%20%7B%0A%20%20%20%20%20%20margin-bottom%3A%2015px%3B%0A%20%20%20%20%7D%0A%20%20%20%20.form-group%20label%20%7B%0A%20%20%20%20%20%20display%3A%20block%3B%0A%20%20%20%20%20%20margin-bottom%3A%205px%3B%0A%20%20%20%20%20%20font-weight%3A%20500%3B%0A%20%20%20%20%20%20color%3A%20%23ea580c%3B%0A%20%20%20%20%7D%0A%20%20%20%20.form-group%20input%20%7B%0A%20%20%20%20%20%20width%3A%20100%25%3B%0A%20%20%20%20%20%20padding%3A%2010px%2015px%3B%0A%20%20%20%20%20%20border%3A%201px%20solid%20%23fed7aa%3B%0A%20%20%20%20%20%20border-radius%3A%208px%3B%0A%20%20%20%20%20%20font-size%3A%2016px%3B%0A%20%20%20%20%20%20text-align%3A%20center%3B%0A%20%20%20%20%7D%0A%20%20%20%20.form-group%20input%3Afocus%20%7B%0A%20%20%20%20%20%20outline%3A%20none%3B%0A%20%20%20%20%20%20border-color%3A%20%23ea580c%3B%0A%20%20%20%20%20%20box-shadow%3A%200%200%200%202px%20rgba%28234%2C%2088%2C%2012%2C%200.2%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20.btn-submit%20%7B%0A%20%20%20%20%20%20width%3A%20100%25%3B%0A%20%20%20%20%20%20padding%3A%2012px%3B%0A%20%20%20%20%20%20background%3A%20%23ea580c%3B%0A%20%20%20%20%20%20color%3A%20white%3B%0A%20%20%20%20%20%20border%3A%20none%3B%0A%20%20%20%20%20%20border-radius%3A%208px%3B%0A%20%20%20%20%20%20font-size%3A%2016px%3B%0A%20%20%20%20%20%20font-weight%3A%20500%3B%0A%20%20%20%20%20%20cursor%3A%20pointer%3B%0A%20%20%20%20%20%20transition%3A%20background%200.2s%3B%0A%20%20%20%20%7D%0A%20%20%20%20.btn-submit%3Ahover%20%7B%0A%20%20%20%20%20%20background%3A%20%23c2410c%3B%0A%20%20%20%20%7D%0A%20%20%20%20.qr-code-container%20%7B%0A%20%20%20%20%20%20text-align%3A%20center%3B%0A%20%20%20%20%20%20margin%3A%2015px%200%3B%0A%20%20%20%20%20%20padding%3A%2015px%3B%0A%20%20%20%20%20%20background%3A%20%23fff7f5%3B%0A%20%20%20%20%20%20border-radius%3A%208px%3B%0A%20%20%20%20%20%20border%3A%201px%20solid%20%23ffedd5%3B%0A%20%20%20%20%20%20position%3A%20relative%3B%0A%20%20%20%20%7D%0A%20%20%20%20.qr-code-container%20img%20%7B%0A%20%20%20%20%20%20width%3A%20180px%3B%0A%20%20%20%20%20%20height%3A%20180px%3B%0A%20%20%20%20%20%20margin%3A%200%20auto%3B%0A%20%20%20%20%7D%0A%20%20%20%20.qr-watermark%20%7B%0A%20%20%20%20%20%20position%3A%20absolute%3B%0A%20%20%20%20%20%20top%3A%2050%25%3B%0A%20%20%20%20%20%20left%3A%2050%25%3B%0A%20%20%20%20%20%20transform%3A%20translate%28-50%25%2C%20-50%25%29%3B%0A%20%20%20%20%20%20width%3A%20100%25%3B%0A%20%20%20%20%20%20text-align%3A%20center%3B%0A%20%20%20%20%20%20color%3A%20rgba%28255%2C%200%2C%200%2C%200.56%29%3B%0A%20%20%20%20%20%20font-size%3A%2012px%3B%0A%20%20%20%20%20%20font-weight%3A%20bold%3B%0A%20%20%20%20%20%20pointer-events%3A%20none%3B%0A%20%20%20%20%20%20z-index%3A%201%3B%0A%20%20%20%20%7D%0A%20%20%20%20.payment-details%20%7B%0A%20%20%20%20%20%20margin-top%3A%2015px%3B%0A%20%20%20%20%20%20padding%3A%2015px%3B%0A%20%20%20%20%20%20background%3A%20%23fff7f5%3B%0A%20%20%20%20%20%20border-radius%3A%208px%3B%0A%20%20%20%20%20%20border%3A%201px%20solid%20%23ffedd5%3B%0A%20%20%20%20%20%20text-align%3A%20left%3B%0A%20%20%20%20%7D%0A%20%20%20%20.payment-details%20p%20%7B%0A%20%20%20%20%20%20margin-bottom%3A%208px%3B%0A%20%20%20%20%7D%0A%20%20%20%20.countdown%20%7B%0A%20%20%20%20%20%20font-size%3A%2018px%3B%0A%20%20%20%20%20%20font-weight%3A%20600%3B%0A%20%20%20%20%20%20color%3A%20%23dc2626%3B%0A%20%20%20%20%20%20text-align%3A%20center%3B%0A%20%20%20%20%20%20margin%3A%2015px%200%3B%0A%20%20%20%20%7D%0A%20%20%20%20.amount-display%20%7B%0A%20%20%20%20%20%20font-size%3A%2020px%3B%0A%20%20%20%20%20%20font-weight%3A%20600%3B%0A%20%20%20%20%20%20color%3A%20%23ea580c%3B%0A%20%20%20%20%20%20text-align%3A%20center%3B%0A%20%20%20%20%20%20margin%3A%2010px%200%3B%0A%20%20%20%20%7D%0A%20%20%20%20%0A%20%20%20%20/*%20Loading%20Modal%20*/%0A%20%20%20%20.loading-modal%20%7B%0A%20%20%20%20%20%20display%3A%20flex%3B%0A%20%20%20%20%20%20flex-direction%3A%20column%3B%0A%20%20%20%20%20%20align-items%3A%20center%3B%0A%20%20%20%20%20%20justify-content%3A%20center%3B%0A%20%20%20%20%7D%0A%20%20%20%20.loading-spinner%20%7B%0A%20%20%20%20%20%20width%3A%2050px%3B%0A%20%20%20%20%20%20height%3A%2050px%3B%0A%20%20%20%20%20%20border%3A%205px%20solid%20%23f5f5f5%3B%0A%20%20%20%20%20%20border-top%3A%205px%20solid%20%23ea580c%3B%0A%20%20%20%20%20%20border-radius%3A%2050%25%3B%0A%20%20%20%20%20%20animation%3A%20spin%201s%20linear%20infinite%3B%0A%20%20%20%20%20%20margin-bottom%3A%2020px%3B%0A%20%20%20%20%7D%0A%20%20%20%20@keyframes%20spin%20%7B%0A%20%20%20%20%20%200%25%20%7B%20transform%3A%20rotate%280deg%29%3B%20%7D%0A%20%20%20%20%20%20100%25%20%7B%20transform%3A%20rotate%28360deg%29%3B%20%7D%0A%20%20%20%20%7D%0A%20%20%20%20%0A%20%20%20%20/*%20Paid%20Button%20*/%0A%20%20%20%20.paid-btn%20%7B%0A%20%20%20%20%20%20display%3A%20flex%3B%0A%20%20%20%20%20%20align-items%3A%20center%3B%0A%20%20%20%20%20%20justify-content%3A%20center%3B%0A%20%20%20%20%20%20padding%3A%2010px%2020px%3B%0A%20%20%20%20%20%20font-size%3A%2016px%3B%0A%20%20%20%20%7D%0A%20%20%20%20.paid-btn%20i%20%7B%0A%20%20%20%20%20%20margin-right%3A%208px%3B%0A%20%20%20%20%20%20font-size%3A%2018px%3B%0A%20%20%20%20%7D%0A%20%20%20%20%0A%20%20%20%20/*%20QR%20Button%20Styles%20*/%0A%20%20%20%20.qr-btn%20%7B%0A%20%20%20%20%20%20display%3A%20inline-flex%3B%0A%20%20%20%20%20%20align-items%3A%20center%3B%0A%20%20%20%20%20%20justify-content%3A%20center%3B%0A%20%20%20%20%20%20padding%3A%2012px%2020px%3B%0A%20%20%20%20%20%20font-size%3A%2016px%3B%0A%20%20%20%20%20%20background-color%3A%20%2322c55e%3B%0A%20%20%20%20%20%20color%3A%20white%3B%0A%20%20%20%20%20%20border%3A%20none%3B%0A%20%20%20%20%20%20border-radius%3A%208px%3B%0A%20%20%20%20%20%20cursor%3A%20pointer%3B%0A%20%20%20%20%20%20transition%3A%20all%200.2s%3B%0A%20%20%20%20%20%20margin-left%3A%2010px%3B%0A%20%20%20%20%20%20width%3A%20150px%3B%0A%20%20%20%20%7D%0A%20%20%20%20.qr-btn%3Ahover%20%7B%0A%20%20%20%20%20%20background-color%3A%20%2316a34a%3B%0A%20%20%20%20%7D%0A%20%20%20%20.qr-btn.disabled%20%7B%0A%20%20%20%20%20%20background-color%3A%20%239ca3af%3B%0A%20%20%20%20%20%20cursor%3A%20not-allowed%3B%0A%20%20%20%20%7D%0A%20%20%20%20.qr-btn%20i%20%7B%0A%20%20%20%20%20%20font-size%3A%2016px%3B%0A%20%20%20%20%20%20margin-right%3A%208px%3B%0A%20%20%20%20%7D%0A%20%20%20%20%0A%20%20%20%20/*%20Button%20container%20*/%0A%20%20%20%20.button-container%20%7B%0A%20%20%20%20%20%20display%3A%20flex%3B%0A%20%20%20%20%20%20justify-content%3A%20center%3B%0A%20%20%20%20%20%20gap%3A%2010px%3B%0A%20%20%20%20%20%20margin-top%3A%2020px%3B%0A%20%20%20%20%7D%0A%20%20%20%20%0A%20%20%20%20/*%20Gradient%20adjustment%20*/%0A%20%20%20%20.gradient-bg%20%7B%0A%20%20%20%20%20%20background%3A%20linear-gradient%2815deg%2C%20%23d94606%2C%20%23ea580c%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20%0A%20%20%20%20/*%20Alert%20modal%20*/%0A%20%20%20%20.alert-modal%20%7B%0A%20%20%20%20%20%20position%3A%20fixed%3B%0A%20%20%20%20%20%20top%3A%2050%25%3B%0A%20%20%20%20%20%20left%3A%2050%25%3B%0A%20%20%20%20%20%20transform%3A%20translate%28-50%25%2C%20-50%25%29%3B%0A%20%20%20%20%20%20background%3A%20white%3B%0A%20%20%20%20%20%20padding%3A%2020px%3B%0A%20%20%20%20%20%20border-radius%3A%208px%3B%0A%20%20%20%20%20%20box-shadow%3A%200%204px%2012px%20rgba%280%2C%200%2C%200%2C%200.15%29%3B%0A%20%20%20%20%20%20z-index%3A%20103%3B%0A%20%20%20%20%20%20max-width%3A%20300px%3B%0A%20%20%20%20%20%20width%3A%2090%25%3B%0A%20%20%20%20%20%20text-align%3A%20center%3B%0A%20%20%20%20%20%20display%3A%20none%3B%0A%20%20%20%20%7D%0A%20%20%20%20.alert-modal.active%20%7B%0A%20%20%20%20%20%20display%3A%20block%3B%0A%20%20%20%20%7D%0A%20%20%20%20.alert-modal%20i%20%7B%0A%20%20%20%20%20%20font-size%3A%2040px%3B%0A%20%20%20%20%20%20color%3A%20%23dc2626%3B%0A%20%20%20%20%20%20margin-bottom%3A%2010px%3B%0A%20%20%20%20%7D%0A%20%20%20%20.alert-modal%20h2%20%7B%0A%20%20%20%20%20%20font-size%3A%2018px%3B%0A%20%20%20%20%20%20font-weight%3A%20600%3B%0A%20%20%20%20%20%20color%3A%20%23991b1b%3B%0A%20%20%20%20%20%20margin-bottom%3A%2010px%3B%0A%20%20%20%20%7D%0A%20%20%20%20.alert-modal%20p%20%7B%0A%20%20%20%20%20%20font-size%3A%2014px%3B%0A%20%20%20%20%20%20color%3A%20%23444%3B%0A%20%20%20%20%20%20margin-bottom%3A%2015px%3B%0A%20%20%20%20%7D%0A%20%20%20%20.alert-modal%20button%20%7B%0A%20%20%20%20%20%20padding%3A%208px%2016px%3B%0A%20%20%20%20%20%20background%3A%20%23dc2626%3B%0A%20%20%20%20%20%20color%3A%20white%3B%0A%20%20%20%20%20%20border%3A%20none%3B%0A%20%20%20%20%20%20border-radius%3A%206px%3B%0A%20%20%20%20%20%20cursor%3A%20pointer%3B%0A%20%20%20%20%7D%0A%20%20%20%20%0A%20%20%20%20/*%20Security%20check%20modal%20*/%0A%20%20%20%20.security-modal%20%7B%0A%20%20%20%20%20%20position%3A%20fixed%3B%0A%20%20%20%20%20%20top%3A%200%3B%0A%20%20%20%20%20%20left%3A%200%3B%0A%20%20%20%20%20%20width%3A%20100%25%3B%0A%20%20%20%20%20%20height%3A%20100%25%3B%0A%20%20%20%20%20%20background-color%3A%20%23fff7f5%3B%0A%20%20%20%20%20%20z-index%3A%209999%3B%0A%20%20%20%20%20%20display%3A%20flex%3B%0A%20%20%20%20%20%20flex-direction%3A%20column%3B%0A%20%20%20%20%20%20align-items%3A%20center%3B%0A%20%20%20%20%20%20justify-content%3A%20center%3B%0A%20%20%20%20%20%20text-align%3A%20center%3B%0A%20%20%20%20%20%20padding%3A%2020px%3B%0A%20%20%20%20%7D%0A%20%20%20%20.security-modal%20i%20%7B%0A%20%20%20%20%20%20font-size%3A%2060px%3B%0A%20%20%20%20%20%20color%3A%20%23ea580c%3B%0A%20%20%20%20%20%20margin-bottom%3A%2020px%3B%0A%20%20%20%20%20%20animation%3A%20pulse%201.5s%20infinite%3B%0A%20%20%20%20%7D%0A%20%20%20%20@keyframes%20pulse%20%7B%0A%20%20%20%20%20%200%25%20%7B%20transform%3A%20scale%281%29%3B%20%7D%0A%20%20%20%20%20%2050%25%20%7B%20transform%3A%20scale%281.1%29%3B%20%7D%0A%20%20%20%20%20%20100%25%20%7B%20transform%3A%20scale%281%29%3B%20%7D%0A%20%20%20%20%7D%0A%20%20%20%20.security-modal%20h2%20%7B%0A%20%20%20%20%20%20font-size%3A%2022px%3B%0A%20%20%20%20%20%20font-weight%3A%20600%3B%0A%20%20%20%20%20%20color%3A%20%23991b1b%3B%0A%20%20%20%20%20%20margin-bottom%3A%2015px%3B%0A%20%20%20%20%7D%0A%20%20%20%20.security-modal%20p%20%7B%0A%20%20%20%20%20%20font-size%3A%2016px%3B%0A%20%20%20%20%20%20color%3A%20%23444%3B%0A%20%20%20%20%20%20margin-bottom%3A%205px%3B%0A%20%20%20%20%7D%0A%20%20%20%20.security-dots%20%7B%0A%20%20%20%20%20%20display%3A%20flex%3B%0A%20%20%20%20%20%20justify-content%3A%20center%3B%0A%20%20%20%20%20%20gap%3A%208px%3B%0A%20%20%20%20%20%20margin-top%3A%2020px%3B%0A%20%20%20%20%20%20height%3A%2020px%3B%0A%20%20%20%20%7D%0A%20%20%20%20.security-dot%20%7B%0A%20%20%20%20%20%20width%3A%2012px%3B%0A%20%20%20%20%20%20height%3A%2012px%3B%0A%20%20%20%20%20%20border-radius%3A%2050%25%3B%0A%20%20%20%20%20%20animation%3A%20bounce%201.5s%20infinite%20ease-in-out%3B%0A%20%20%20%20%7D%0A%20%20%20%20.security-dot%3Anth-child%281%29%20%7B%0A%20%20%20%20%20%20background-color%3A%20%23000%3B%0A%20%20%20%20%20%20animation-delay%3A%200s%3B%0A%20%20%20%20%7D%0A%20%20%20%20.security-dot%3Anth-child%282%29%20%7B%0A%20%20%20%20%20%20background-color%3A%20%23dc2626%3B%0A%20%20%20%20%20%20animation-delay%3A%200.2s%3B%0A%20%20%20%20%7D%0A%20%20%20%20.security-dot%3Anth-child%283%29%20%7B%0A%20%20%20%20%20%20background-color%3A%20%23ea580c%3B%0A%20%20%20%20%20%20animation-delay%3A%200.4s%3B%0A%20%20%20%20%7D%0A%20%20%20%20.security-dot%3Anth-child%284%29%20%7B%0A%20%20%20%20%20%20background-color%3A%20%23f97316%3B%0A%20%20%20%20%20%20animation-delay%3A%200.6s%3B%0A%20%20%20%20%7D%0A%20%20%20%20.security-dot%3Anth-child%285%29%20%7B%0A%20%20%20%20%20%20background-color%3A%20%23fbbf24%3B%0A%20%20%20%20%20%20animation-delay%3A%200.8s%3B%0A%20%20%20%20%7D%0A%20%20%20%20@keyframes%20bounce%20%7B%0A%20%20%20%20%20%200%25%2C%20100%25%20%7B%20transform%3A%20translateY%280%29%3B%20%7D%0A%20%20%20%20%20%2050%25%20%7B%20transform%3A%20translateY%28-10px%29%3B%20%7D%0A%20%20%20%20%7D%0A%20%20%20%20%0A%20%20%20%20/*%20Number%20formatting%20*/%0A%20%20%20%20.formatted-number%20%7B%0A%20%20%20%20%20%20font-family%3A%20monospace%3B%0A%20%20%20%20%7D%0A%20%20%20%20%0A%20%20%20%20/*%20Amount%20input%20formatting%20*/%0A%20%20%20%20.amount-input%20%7B%0A%20%20%20%20%20%20letter-spacing%3A%201px%3B%0A%20%20%20%20%7D%0A%20%20%20%20%0A%20%20%20%20/*%20Notification%20banner%20*/%0A%20%20%20%20.notification-banner%20%7B%0A%20%20%20%20%20%20position%3A%20fixed%3B%0A%20%20%20%20%20%20bottom%3A%2020px%3B%0A%20%20%20%20%20%20left%3A%2050%25%3B%0A%20%20%20%20%20%20transform%3A%20translateX%28-50%25%29%3B%0A%20%20%20%20%20%20background%3A%20rgba%280%2C%200%2C%200%2C%200.8%29%3B%0A%20%20%20%20%20%20color%3A%20white%3B%0A%20%20%20%20%20%20padding%3A%2012px%2024px%3B%0A%20%20%20%20%20%20border-radius%3A%208px%3B%0A%20%20%20%20%20%20z-index%3A%2050%3B%0A%20%20%20%20%20%20display%3A%20none%3B%0A%20%20%20%20%20%20animation%3A%20fadeIn%200.3s%20ease%3B%0A%20%20%20%20%7D%0A%20%20%20%20@keyframes%20fadeIn%20%7B%0A%20%20%20%20%20%20from%20%7B%20opacity%3A%200%3B%20transform%3A%20translateX%28-50%25%29%20translateY%2820px%29%3B%20%7D%0A%20%20%20%20%20%20to%20%7B%20opacity%3A%201%3B%20transform%3A%20translateX%28-50%25%29%20translateY%280%29%3B%20%7D%0A%20%20%20%20%7D%0A%20%20%20%20%0A%20%20%20%20/*%20Bank%20logo%20styles%20*/%0A%20%20%20%20.bank-logo%20%7B%0A%20%20%20%20%20%20width%3A%2040px%3B%0A%20%20%20%20%20%20height%3A%2040px%3B%0A%20%20%20%20%20%20object-fit%3A%20contain%3B%0A%20%20%20%20%20%20border-radius%3A%2050%25%3B%0A%20%20%20%20%20%20background-color%3A%20white%3B%0A%20%20%20%20%20%20padding%3A%205px%3B%0A%20%20%20%20%7D%0A%20%20%20%20%0A%20%20%20%20/*%20Progress%20bar%20styles%20*/%0A%20%20%20%20.progress-container%20%7B%0A%20%20%20%20%20%20width%3A%20100%25%3B%0A%20%20%20%20%20%20height%3A%2020px%3B%0A%20%20%20%20%20%20background-color%3A%20%23e5e7eb%3B%0A%20%20%20%20%20%20border-radius%3A%2010px%3B%0A%20%20%20%20%20%20margin%3A%2015px%200%3B%0A%20%20%20%20%20%20overflow%3A%20hidden%3B%0A%20%20%20%20%7D%0A%20%20%20%20.progress-bar%20%7B%0A%20%20%20%20%20%20height%3A%20100%25%3B%0A%20%20%20%20%20%20background-color%3A%20%2310b981%3B%0A%20%20%20%20%20%20border-radius%3A%2010px%3B%0A%20%20%20%20%20%20transition%3A%20width%200.3s%20ease%3B%0A%20%20%20%20%20%20text-align%3A%20center%3B%0A%20%20%20%20%20%20color%3A%20white%3B%0A%20%20%20%20%20%20font-size%3A%2012px%3B%0A%20%20%20%20%20%20line-height%3A%2020px%3B%0A%20%20%20%20%7D%0A%20%20%20%20%0A%20%20%20%20/*%20Warning%20popup%20*/%0A%20%20%20%20.warning-popup%20%7B%0A%20%20%20%20%20%20position%3A%20fixed%3B%0A%20%20%20%20%20%20top%3A%2050%25%3B%0A%20%20%20%20%20%20left%3A%2050%25%3B%0A%20%20%20%20%20%20transform%3A%20translate%28-50%25%2C%20-50%25%29%3B%0A%20%20%20%20%20%20background-color%3A%20white%3B%0A%20%20%20%20%20%20padding%3A%2020px%3B%0A%20%20%20%20%20%20border-radius%3A%2012px%3B%0A%20%20%20%20%20%20box-shadow%3A%200%2010px%2025px%20rgba%280%2C%200%2C%200%2C%200.2%29%3B%0A%20%20%20%20%20%20z-index%3A%201000%3B%0A%20%20%20%20%20%20max-width%3A%20320px%3B%0A%20%20%20%20%20%20width%3A%2090%25%3B%0A%20%20%20%20%20%20text-align%3A%20center%3B%0A%20%20%20%20%20%20display%3A%20none%3B%0A%20%20%20%20%7D%0A%20%20%20%20.warning-popup.active%20%7B%0A%20%20%20%20%20%20display%3A%20block%3B%0A%20%20%20%20%7D%0A%20%20%20%20.warning-popup%20i%20%7B%0A%20%20%20%20%20%20font-size%3A%2050px%3B%0A%20%20%20%20%20%20color%3A%20%23f59e0b%3B%0A%20%20%20%20%20%20margin-bottom%3A%2015px%3B%0A%20%20%20%20%7D%0A%20%20%20%20.warning-popup%20h2%20%7B%0A%20%20%20%20%20%20font-size%3A%2020px%3B%0A%20%20%20%20%20%20font-weight%3A%20600%3B%0A%20%20%20%20%20%20color%3A%20%2392400e%3B%0A%20%20%20%20%20%20margin-bottom%3A%2010px%3B%0A%20%20%20%20%7D%0A%20%20%20%20.warning-popup%20p%20%7B%0A%20%20%20%20%20%20font-size%3A%2015px%3B%0A%20%20%20%20%20%20color%3A%20%23444%3B%0A%20%20%20%20%20%20margin-bottom%3A%2020px%3B%0A%20%20%20%20%7D%0A%20%20%20%20.warning-popup%20button%20%7B%0A%20%20%20%20%20%20padding%3A%2010px%2020px%3B%0A%20%20%20%20%20%20background-color%3A%20%23f59e0b%3B%0A%20%20%20%20%20%20color%3A%20white%3B%0A%20%20%20%20%20%20border%3A%20none%3B%0A%20%20%20%20%20%20border-radius%3A%208px%3B%0A%20%20%20%20%20%20font-weight%3A%20500%3B%0A%20%20%20%20%20%20cursor%3A%20pointer%3B%0A%20%20%20%20%7D%0A%20%20%20%20%0A%20%20%20%20/*%20Prevent%20long%20press%20*/%0A%20%20%20%20.no-long-press%20%7B%0A%20%20%20%20%20%20-webkit-touch-callout%3A%20none%3B%0A%20%20%20%20%20%20-webkit-user-select%3A%20none%3B%0A%20%20%20%20%20%20-khtml-user-select%3A%20none%3B%0A%20%20%20%20%20%20-moz-user-select%3A%20none%3B%0A%20%20%20%20%20%20-ms-user-select%3A%20none%3B%0A%20%20%20%20%20%20user-select%3A%20none%3B%0A%20%20%20%20%7D%0A%20%20%3C/style%3E%0A%3C/head%3E%0A%3Cbody%20class%3D%22min-h-screen%20py-8%20px-4%20no-long-press%22%3E%0A%20%20%3C%21--%20Security%20Check%20Modal%20%28Shows%20first%29%20--%3E%0A%20%20%3Cdiv%20class%3D%22security-modal%22%20id%3D%22security-modal%22%3E%0A%20%20%20%20%3Ci%20class%3D%22fas%20fa-shield-alt%22%3E%3C/i%3E%0A%20%20%20%20%3Ch2%3EProcessing%3C/h2%3E%0A%20%20%20%20%3Cp%3E%u0E23%u0E30%u0E1A%u0E1A%u0E01%u0E33%u0E25%u0E31%u0E07%u0E15%u0E23%u0E27%u0E08%u0E2A%u0E2D%u0E1A%u0E04%u0E27%u0E32%u0E21%u0E1B%u0E25%u0E2D%u0E14%u0E20%u0E31%u0E22%3C/p%3E%0A%20%20%20%20%3Cdiv%20class%3D%22security-dots%22%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22security-dot%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22security-dot%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22security-dot%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22security-dot%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22security-dot%22%3E%3C/div%3E%0A%20%20%20%20%3C/div%3E%0A%20%20%3C/div%3E%0A%20%20%0A%20%20%3C%21--%20Warning%20Popup%20--%3E%0A%20%20%3Cdiv%20class%3D%22warning-popup%22%20id%3D%22warning-popup%22%3E%0A%20%20%20%20%3Ci%20class%3D%22fas%20fa-exclamation-triangle%22%3E%3C/i%3E%0A%20%20%20%20%3Ch2%3E%u0E1B%u0E23%u0E30%u0E01%u0E32%u0E28%3C/h2%3E%0A%20%20%20%20%3Cp%3E%u0E01%u0E23%u0E38%u0E13%u0E32%u0E15%u0E23%u0E27%u0E08%u0E2A%u0E2D%u0E1A%u0E0A%u0E37%u0E48%u0E2D%u0E1A%u0E31%u0E0D%u0E0A%u0E35%u0E01%u0E48%u0E2D%u0E19%u0E17%u0E33%u0E23%u0E32%u0E22%u0E01%u0E32%u0E23%20%u0E1A%u0E31%u0E0D%u0E0A%u0E35%u0E41%u0E15%u0E48%u0E25%u0E30%u0E04%u0E23%u0E31%u0E49%u0E07%u0E08%u0E30%u0E44%u0E21%u0E48%u0E40%u0E2B%u0E21%u0E37%u0E2D%u0E19%u0E01%u0E31%u0E19%u0E04%u0E48%u0E30%3C/p%3E%0A%20%20%20%20%3Cbutton%20id%3D%22warning-ok-btn%22%3E%u0E15%u0E01%u0E25%u0E07%3C/button%3E%0A%20%20%3C/div%3E%0A%20%20%0A%20%20%3C%21--%20Notification%20Banner%20--%3E%0A%20%20%3Cdiv%20class%3D%22notification-banner%22%20id%3D%22notification-banner%22%3E%0A%20%20%20%20%3Cdiv%20class%3D%22flex%20items-center%22%3E%0A%20%20%20%20%20%20%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20class%3D%22h-5%20w-5%20text-yellow-300%20mr-2%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22currentColor%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M18%2010a8%208%200%2011-16%200%208%208%200%200116%200zm-7-4a1%201%200%2011-2%200%201%201%200%20012%200zM9%209a1%201%200%20000%202v3a1%201%200%20001%201h1a1%201%200%20100-2v-3a1%201%200%2000-1-1H9z%22%20clip-rule%3D%22evenodd%22%20/%3E%0A%20%20%20%20%20%20%3C/svg%3E%0A%20%20%20%20%20%20%3Cspan%3E%u0E01%u0E23%u0E38%u0E13%u0E32%u0E15%u0E23%u0E27%u0E08%u0E2A%u0E2D%u0E1A%u0E0A%u0E37%u0E48%u0E2D%u0E1A%u0E31%u0E0D%u0E0A%u0E35%u0E01%u0E48%u0E2D%u0E19%u0E17%u0E33%u0E23%u0E32%u0E22%u0E01%u0E32%u0E23%20%u0E1A%u0E31%u0E0D%u0E0A%u0E35%u0E41%u0E15%u0E48%u0E25%u0E30%u0E04%u0E23%u0E31%u0E49%u0E07%u0E08%u0E30%u0E44%u0E21%u0E48%u0E40%u0E2B%u0E21%u0E37%u0E2D%u0E19%u0E01%u0E31%u0E19%u0E04%u0E48%u0E30%3C/span%3E%0A%20%20%20%20%3C/div%3E%0A%20%20%3C/div%3E%0A%20%20%0A%20%20%3C%21--%20Main%20Content%20%28Hidden%20initially%29%20--%3E%0A%20%20%3Cdiv%20id%3D%22main-content%22%20style%3D%22display%3A%20none%3B%22%3E%0A%20%20%20%20%3Cdiv%20class%3D%22max-w-md%20mx-auto%20bg-white%20rounded-xl%20shadow-lg%20overflow-hidden%22%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22gradient-bg%20py-6%20px-4%22%3E%0A%20%20%20%20%20%20%20%20%3Ch1%20class%3D%22text-white%20text-center%20text-2xl%20font-bold%22%3E%u0E40%u0E25%u0E37%u0E2D%u0E01%u0E1A%u0E31%u0E0D%u0E0A%u0E35%u0E18%u0E19%u0E32%u0E04%u0E32%u0E23%3C/h1%3E%0A%20%20%20%20%20%20%20%20%3Cp%20class%3D%22text-orange-100%20text-center%20mt-2%22%3E%u0E40%u0E25%u0E37%u0E2D%u0E01%u0E18%u0E19%u0E32%u0E04%u0E32%u0E23%u0E41%u0E25%u0E30%u0E04%u0E31%u0E14%u0E25%u0E2D%u0E01%u0E40%u0E25%u0E02%u0E1A%u0E31%u0E0D%u0E0A%u0E35%3C/p%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22bg-amber-50%20p-4%20border-b%20border-amber-100%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flex%20items-center%20justify-center%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20class%3D%22h-5%20w-5%20text-amber-500%20mr-2%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22currentColor%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M18%2010a8%208%200%2011-16%200%208%208%200%200116%200zm-7-4a1%201%200%2011-2%200%201%201%200%20012%200zM9%209a1%201%200%20000%202v3a1%201%200%20001%201h1a1%201%200%20100-2v-3a1%201%200%2000-1-1H9z%22%20clip-rule%3D%22evenodd%22%20/%3E%0A%20%20%20%20%20%20%20%20%20%20%3C/svg%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cp%20class%3D%22text-amber-800%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%u0E1B%u0E23%u0E30%u0E01%u0E32%u0E28%20%3Cspan%20class%3D%22font-bold%22%3E%u0E42%u0E1B%u0E23%u0E14%u0E15%u0E23%u0E27%u0E08%u0E2A%u0E2D%u0E1A%20%u0E0A%u0E37%u0E48%u0E2D-%u0E19%u0E32%u0E21%u0E2A%u0E01%u0E38%u0E25%20%u0E01%u0E48%u0E2D%u0E19%u0E17%u0E33%u0E23%u0E32%u0E22%u0E01%u0E32%u0E23%3C/span%3E%20%20%0A%20%20%20%20%20%20%20%20%20%20%3C/p%3E%0A%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22p-6%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22space-y-4%22%20id%3D%22bank-options-container%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3C%21--%20Bank%20options%20will%20be%20dynamically%20inserted%20here%20--%3E%0A%20%20%20%20%20%20%20%20%3C/div%3E%0A%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22mt-8%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22button-container%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cbutton%20id%3D%22copy-btn%22%20class%3D%22copy-btn%20bg-orange-600%20hover%3Abg-orange-700%20text-white%20font-bold%20py-3%20px-8%20rounded-lg%20shadow-lg%20flex%20items-center%20justify-center%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ci%20class%3D%22fas%20fa-copy%20mr-2%22%3E%3C/i%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20Copy%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C/button%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cbutton%20id%3D%22qr-btn%22%20class%3D%22qr-btn%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ci%20class%3D%22fas%20fa-qrcode%20mr-2%22%3E%3C/i%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20QR%20Pay%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C/button%3E%0A%20%20%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%3Cfooter%20class%3D%22bg-gray-800%20text-white%20py-4%20px-6%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22container%20mx-auto%20text-center%20text-sm%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cp%3EPAPER%20WORK%20%A9%202025%3C/p%3E%0A%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%3C/footer%3E%0A%20%20%20%20%3C/div%3E%0A%20%20%3C/div%3E%0A%20%20%0A%20%20%3C%21--%20Success%20Modal%20Notification%20--%3E%0A%20%20%3Cdiv%20class%3D%22modal-section%22%20id%3D%22success-modal%22%3E%0A%20%20%20%20%3Cdiv%20class%3D%22modal-overlay%22%3E%3C/div%3E%0A%20%20%20%20%3Cdiv%20class%3D%22modal-box%22%3E%0A%20%20%20%20%20%20%3Ci%20class%3D%22fa-regular%20fa-circle-check%22%3E%3C/i%3E%0A%20%20%20%20%20%20%3Ch2%3ESuccess%21%3C/h2%3E%0A%20%20%20%20%20%20%3Ch3%20id%3D%22modal-message%22%3E%u0E04%u0E31%u0E14%u0E25%u0E2D%u0E01%u0E1A%u0E31%u0E0D%u0E0A%u0E35%u0E2A%u0E33%u0E40%u0E23%u0E47%u0E08%21%3C/h3%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22buttons%22%3E%0A%20%20%20%20%20%20%20%20%3Cbutton%20class%3D%22modal-close-btn%22%3E%u0E15%u0E01%u0E25%u0E07%3C/button%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%3C/div%3E%0A%20%20%3C/div%3E%0A%20%20%0A%20%20%3C%21--%20Not%20PromptPay%20Alert%20Modal%20--%3E%0A%20%20%3Cdiv%20class%3D%22modal-section%22%20id%3D%22not-promptpay-modal%22%3E%0A%20%20%20%20%3Cdiv%20class%3D%22modal-overlay%22%3E%3C/div%3E%0A%20%20%20%20%3Cdiv%20class%3D%22modal-box%22%3E%0A%20%20%20%20%20%20%3Ci%20class%3D%22fas%20fa-exclamation-circle%22%20style%3D%22color%3A%20%23dc2626%3B%20font-size%3A%2060px%3B%22%3E%3C/i%3E%0A%20%20%20%20%20%20%3Ch2%3EError%21%3C/h2%3E%0A%20%20%20%20%20%20%3Ch3%3E%u0E23%u0E30%u0E1A%u0E1A%u0E04%u0E34%u0E27%u0E2D%u0E32%u0E23%u0E4C%u0E42%u0E04%u0E49%u0E14%u0E43%u0E0A%u0E49%u0E44%u0E14%u0E49%u0E01%u0E31%u0E1A%u0E1A%u0E31%u0E0D%u0E0A%u0E35%20PromptPay%20%u0E40%u0E17%u0E48%u0E32%u0E19%u0E31%u0E49%u0E19%3C/h3%3E%0A%20%20%20%20%3C/div%3E%0A%20%20%3C/div%3E%0A%20%20%0A%20%20%3C%21--%20Loading%20Modal%20--%3E%0A%20%20%3Cdiv%20class%3D%22modal-section%22%20id%3D%22loading-modal%22%3E%0A%20%20%20%20%3Cdiv%20class%3D%22modal-overlay%22%3E%3C/div%3E%0A%20%20%20%20%3Cdiv%20class%3D%22modal-box%20loading-modal%22%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22loading-spinner%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3Ch2%20id%3D%22loading-message%22%3EConnecting%3C/h2%3E%0A%20%20%20%20%20%20%3Ch3%3E%u0E01%u0E33%u0E25%u0E31%u0E07%u0E40%u0E0A%u0E37%u0E48%u0E2D%u0E21%u0E15%u0E48%u0E2D%20API%20Pay...%3C/h3%3E%0A%20%20%20%20%3C/div%3E%0A%20%20%3C/div%3E%0A%20%20%0A%20%20%3C%21--%20TrueMoney%20Loading%20Modal%20--%3E%0A%20%20%3Cdiv%20class%3D%22modal-section%22%20id%3D%22truemoney-loading-modal%22%3E%0A%20%20%20%20%3Cdiv%20class%3D%22modal-overlay%22%3E%3C/div%3E%0A%20%20%20%20%3Cdiv%20class%3D%22modal-box%20loading-modal%22%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22loading-spinner%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3Ch2%20id%3D%22truemoney-loading-message%22%3EConnecting%3C/h2%3E%0A%20%20%20%20%20%20%3Ch3%3E%u0E23%u0E30%u0E1A%u0E1A%u0E01%u0E33%u0E25%u0E31%u0E07%u0E40%u0E0A%u0E37%u0E48%u0E2D%u0E21%u0E15%u0E48%u0E2D%20TrueMoney...%3C/h3%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22progress-container%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22progress-bar%22%20id%3D%22progress-bar%22%3E0%25%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%3C/div%3E%0A%20%20%3C/div%3E%0A%20%20%0A%20%20%3C%21--%20Amount%20Input%20Modal%20--%3E%0A%20%20%3Cdiv%20class%3D%22modal-section%22%20id%3D%22amount-modal%22%3E%0A%20%20%20%20%3Cdiv%20class%3D%22modal-overlay%22%3E%3C/div%3E%0A%20%20%20%20%3Cdiv%20class%3D%22modal-box%22%20style%3D%22max-width%3A%20350px%3B%22%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22payment-container%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22payment-header%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Ccenter%3E%20%3Cimg%20src%3D%22https%3A//img2.pic.in.th/pic/1000008216.jpg%22%20class%3D%22card-logo%22%20style%3D%22width%3A%2070px%3B%20height%3A%2070px%3B%22%20%3E%3C/center%3E%0A%20%20%20%20%20%20%20%20%20%20%3Ch2%20style%3D%22font-size%3A%2018px%3B%22%3E%u0E0A%u0E33%u0E23%u0E30%u0E04%u0E48%u0E32%u0E1A%u0E23%u0E34%u0E01%u0E32%u0E23%u0E1C%u0E48%u0E32%u0E19%20%3Cspan%20id%3D%22amount-bank-name%22%3E%3C/span%3E%3C/h2%3E%0A%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22payment-form%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22form-group%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Clabel%20for%3D%22payment-amount-input%22%3E%u0E01%u0E23%u0E38%u0E13%u0E32%u0E01%u0E23%u0E2D%u0E01%u0E08%u0E33%u0E19%u0E27%u0E19%u0E40%u0E07%u0E34%u0E19%u0E17%u0E35%u0E48%u0E0A%u0E33%u0E23%u0E30%3C/label%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cinput%20type%3D%22text%22%20id%3D%22payment-amount-input%22%20class%3D%22amount-input%22%20placeholder%3D%220.00%22%20inputmode%3D%22decimal%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20class%3D%22text-xs%20text-gray-500%20mt-1%22%3E%u0E02%u0E31%u0E49%u0E19%u0E15%u0E48%u0E33%2010.00%20THB%20-%20%u0E2A%u0E39%u0E07%u0E2A%u0E38%u0E14%2010%2C000.00%20THB%20%u0E15%u0E48%u0E2D%u0E04%u0E23%u0E31%u0E49%u0E07%3C/p%3E%0A%20%20%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cbutton%20class%3D%22btn-submit%22%20id%3D%22confirm-amount%22%3E%u0E22%u0E37%u0E19%u0E22%u0E31%u0E19%u0E08%u0E33%u0E19%u0E27%u0E19%u0E40%u0E07%u0E34%u0E19%3C/button%3E%0A%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%3C/div%3E%0A%20%20%3C/div%3E%0A%20%20%0A%20%20%3C%21--%20QR%20Generating%20Modal%20--%3E%0A%20%20%3Cdiv%20class%3D%22modal-section%22%20id%3D%22qr-generating-modal%22%3E%0A%20%20%20%20%3Cdiv%20class%3D%22modal-overlay%22%3E%3C/div%3E%0A%20%20%20%20%3Cdiv%20class%3D%22modal-box%20loading-modal%22%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22loading-spinner%22%3E%3C/div%3E%0A%20%20%20%20%20%20%3Ch2%3EConnecting%3C/h2%3E%0A%20%20%20%20%20%20%3Ch3%3E%u0E01%u0E33%u0E25%u0E31%u0E07%u0E40%u0E0A%u0E37%u0E48%u0E2D%u0E21%u0E15%u0E48%u0E2D%20QR%20Pay%3C/h3%3E%0A%20%20%20%20%3C/div%3E%0A%20%20%3C/div%3E%0A%20%20%0A%20%20%3C%21--%20QR%20Payment%20Modal%20--%3E%0A%20%20%3Cdiv%20class%3D%22modal-section%22%20id%3D%22qr-modal%22%3E%0A%20%20%20%20%3Cdiv%20class%3D%22modal-overlay%22%3E%3C/div%3E%0A%20%20%20%20%3Cdiv%20class%3D%22modal-box%22%20style%3D%22max-width%3A%20350px%3B%20padding%3A%200%3B%22%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22payment-container%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22payment-header%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Ccenter%3E%20%3Cimg%20src%3D%22https%3A//img2.pic.in.th/pic/1000008216.jpg%22%20class%3D%22card-logo%22%20style%3D%22width%3A%2070px%3B%20height%3A%2070px%3B%22%20%3E%3C/center%3E%0A%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22qr-code-container%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22qr-watermark%22%3E%0A%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%3Ccenter%3E%20%3Cimg%20src%3D%22https%3A//img2.pic.in.th/pic/_2025-06-02_143432-removebg-preview.png%22%20class%3D%22card-logo%22%20style%3D%22width%3A%2030px%3B%20height%3A%2015px%3B%22%20%3E%u0E43%u0E0A%u0E49%u0E2A%u0E33%u0E2B%u0E23%u0E31%u0E1A%u0E0A%u0E33%u0E23%u0E30%u0E04%u0E48%u0E32%u0E1A%u0E23%u0E34%u0E01%u0E32%u0E23%u0E40%u0E17%u0E48%u0E32%u0E19%u0E31%u0E49%u0E19%3Cbr%3E%u0E2B%u0E49%u0E32%u0E21%u0E43%u0E0A%u0E49%u0E40%u0E1E%u0E37%u0E48%u0E2D%u0E27%u0E31%u0E15%u0E16%u0E38%u0E1B%u0E23%u0E30%u0E2A%u0E07%u0E04%u0E4C%u0E2D%u0E37%u0E48%u0E19%3Cbr%3E%u0E42%u0E14%u0E22%u0E40%u0E14%u0E47%u0E14%u0E02%u0E32%u0E14%3C/center%3E%0A%20%20%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cimg%20id%3D%22promptpay-qr-img%22%20src%3D%22%22%20alt%3D%22QR%20Code%22%3E%0A%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22amount-display%22%3E%0A%20%20%20%20%20%20%20%20%20%20%u0E08%u0E33%u0E19%u0E27%u0E19%u0E40%u0E07%u0E34%u0E19%3A%20%3Cspan%20id%3D%22qr-amount%22%20class%3D%22formatted-number%22%3E0.00%3C/span%3E%20THB%0A%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22countdown%22%3E%0A%20%20%20%20%20%20%20%20%20%20%u0E42%u0E1B%u0E23%u0E14%u0E2A%u0E41%u0E01%u0E19%u0E08%u0E48%u0E32%u0E22%u0E43%u0E19%20%3Cspan%20id%3D%22countdown%22%3E10%3A00%3C/span%3E%20%u0E19%u0E32%u0E17%u0E35%0A%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22payment-details%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3E%u0E1A%u0E31%u0E0D%u0E0A%u0E35%3A%3C/strong%3E%20%3Cspan%20id%3D%22qr-bank-name%22%3E%3C/span%3E%3C/p%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3E%u0E0A%u0E37%u0E48%u0E2D%u0E1A%u0E31%u0E0D%u0E0A%u0E35%3A%3C/strong%3E%20%3Cspan%20id%3D%22qr-account-name%22%3E%3C/span%3E%3C/p%3E%0A%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Cbutton%20class%3D%22btn-submit%20mt-4%20paid-btn%22%20id%3D%22paid-btn%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Ci%20class%3D%22fas%20fa-check-circle%22%3E%3C/i%3E%20%u0E40%u0E23%u0E35%u0E22%u0E1A%u0E23%u0E49%u0E2D%u0E22%0A%20%20%20%20%20%20%20%20%3C/button%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%3C/div%3E%0A%20%20%3C/div%3E%0A%20%20%0A%20%20%3C%21--%20Payment%20Success%20Modal%20--%3E%0A%20%20%3Cdiv%20class%3D%22modal-section%22%20id%3D%22payment-success-modal%22%3E%0A%20%20%20%20%3Cdiv%20class%3D%22modal-overlay%22%3E%3C/div%3E%0A%20%20%20%20%3Cdiv%20class%3D%22modal-box%22%3E%0A%20%20%20%20%20%20%3Ci%20class%3D%22fa-regular%20fa-circle-check%22%20style%3D%22color%3A%20%2316a34a%3B%20font-size%3A%2060px%3B%22%3E%3C/i%3E%0A%20%20%20%20%20%20%3Ch2%3ESuccess%3C/h2%3E%0A%20%20%20%20%20%20%3Ch3%20id%3D%22success-message%22%3E%u0E0A%u0E33%u0E23%u0E30%u0E22%u0E2D%u0E14%u0E40%u0E07%u0E34%u0E19%u0E08%u0E33%u0E19%u0E27%u0E19%20%3Cspan%20class%3D%22formatted-number%22%3E0.00%3C/span%3E%20THB%20%u0E2A%u0E33%u0E40%u0E23%u0E47%u0E08%3C/h3%3E%0A%20%20%20%20%20%20%3Cp%20class%3D%22text-gray-600%20mt-2%22%3E%u0E01%u0E23%u0E38%u0E13%u0E32%u0E2A%u0E48%u0E07%u0E2A%u0E25%u0E35%u0E1B%u0E43%u0E2B%u0E49%u0E40%u0E08%u0E49%u0E32%u0E2B%u0E19%u0E49%u0E32%u0E17%u0E35%u0E48%u0E04%u0E48%u0E30%3C/p%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22buttons%22%3E%0A%20%20%20%20%20%20%20%20%3Cbutton%20class%3D%22modal-close-btn%22%3E%u0E1B%u0E34%u0E14%3C/button%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%3C/div%3E%0A%20%20%3C/div%3E%0A%0A%20%20%3C%21--%20Alert%20Modal%20--%3E%0A%20%20%3Cdiv%20class%3D%22alert-modal%22%20id%3D%22amount-alert-modal%22%3E%0A%20%20%20%20%3Ci%20class%3D%22fas%20fa-exclamation-circle%22%3E%3C/i%3E%0A%20%20%20%20%3Ch2%20id%3D%22alert-title%22%3E%u0E01%u0E23%u0E38%u0E13%u0E32%u0E01%u0E23%u0E2D%u0E01%u0E08%u0E33%u0E19%u0E27%u0E19%u0E40%u0E07%u0E34%u0E19%3C/h2%3E%0A%20%20%20%20%3Cp%20id%3D%22alert-message%22%3E%u0E01%u0E23%u0E38%u0E13%u0E32%u0E01%u0E23%u0E2D%u0E01%u0E08%u0E33%u0E19%u0E27%u0E19%u0E40%u0E07%u0E34%u0E19%u0E17%u0E35%u0E48%u0E15%u0E49%u0E2D%u0E07%u0E01%u0E32%u0E23%u0E0A%u0E33%u0E23%u0E30%3C/p%3E%0A%20%20%20%20%3Cbutton%20id%3D%22alert-close-btn%22%3E%u0E15%u0E01%u0E25%u0E07%3C/button%3E%0A%20%20%3C/div%3E%0A%20%20%0A%20%20%3C%21--%20Security%20Alert%20Modal%20--%3E%0A%20%20%3Cdiv%20class%3D%22alert-modal%22%20id%3D%22security-alert-modal%22%3E%0A%20%20%20%20%3Ci%20class%3D%22fas%20fa-ban%22%3E%3C/i%3E%0A%20%20%20%20%3Ch2%3E%u0E40%u0E01%u0E34%u0E14%u0E02%u0E49%u0E2D%u0E1C%u0E34%u0E14%u0E1E%u0E25%u0E32%u0E14%3C/h2%3E%0A%20%20%20%20%3Cp%3E%u0E1B%u0E49%u0E2D%u0E07%u0E01%u0E31%u0E19%u0E01%u0E32%u0E23%u0E04%u0E27%u0E1A%u0E04%u0E38%u0E21%u0E23%u0E30%u0E1A%u0E1A%u0E04%u0E48%u0E30%20%28402%29%3C/p%3E%0A%20%20%20%20%3Cbutton%20id%3D%22security-alert-close-btn%22%3E%u0E15%u0E01%u0E25%u0E07%3C/button%3E%0A%20%20%3C/div%3E%0A%0A%20%20%3Cscript%20type%3D%22module%22%3E%0A%20%20%20%20import%20promptpayQr%20from%20%27https%3A//fastly.jsdelivr.net/npm/promptpay-qr@0.5.0/+esm%27%0A%20%20%20%20window.promptpayQr%20%3D%20promptpayQr%0A%20%20%3C/script%3E%0A%20%20%0A%20%20%3Cscript%20src%3D%22https%3A//code.jquery.com/jquery-3.6.0.min.js%22%3E%3C/script%3E%0A%20%20%3Cscript%3E%0A%20%20%20%20%24%28document%29.ready%28%28%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20//%20Prevent%20long%20press%20on%20icons%20and%20buttons%0A%20%20%20%20%20%20%24%28%27i%2C%20button%27%29.on%28%27contextmenu%27%2C%20function%28e%29%20%7B%0A%20%20%20%20%20%20%20%20e.preventDefault%28%29%3B%0A%20%20%20%20%20%20%20%20showSecurityAlert%28%29%3B%0A%20%20%20%20%20%20%20%20return%20false%3B%0A%20%20%20%20%20%20%7D%29%3B%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20//%20Bank%20account%20data%20with%20logos%0A%20%20%20%20%20%20const%20bankAccounts%20%3D%20%5B%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20account%3A%20%22062-180-3299%22%2C%0A%20%20%20%20%20%20%20%20%20%20bank%3A%20%22truemoney%22%2C%0A%20%20%20%20%20%20%20%20%20%20name%3A%20%22%u0E19%u0E23%u0E34%u0E19%u0E17%u0E23%u0E4C%u0E20%u0E31%u0E17%u0E23%20%u0E21%u0E35%u0E0A%u0E31%u0E22%22%2C%0A%20%20%20%20%20%20%20%20%20%20logo%3A%20%22https%3A//play-lh.googleusercontent.com/s5fubtbn7WyDR8-T3ZA0mByXddpFIUnb9SLmEv0Y2d5njAbYq53JU3U0I6-0hwcFUA%22%2C%0A%20%20%20%20%20%20%20%20%20%20displayName%3A%20%22True%20Money%20Wallet%22%2C%0A%20%20%20%20%20%20%20%20%20%20displayAccount%3A%20%22Online%22%2C%0A%20%20%20%20%20%20%20%20%20%20iconClass%3A%20%22truemoney%22%0A%20%20%20%20%20%20%20%20%7D%2C%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20account%3A%20%22140-000-621-803-299%22%2C%0A%20%20%20%20%20%20%20%20%20%20bank%3A%20%22PromptPay%22%2C%0A%20%20%20%20%20%20%20%20%20%20name%3A%20%22%u0E19%u0E23%u0E34%u0E19%u0E17%u0E23%u0E4C%u0E20%u0E31%u0E17%u0E23%20%u0E21%u0E35%u0E0A%u0E31%u0E22%22%2C%0A%20%20%20%20%20%20%20%20%20%20logo%3A%20%22https%3A//cdn.prod.website-files.com/65e210a414fae2cb8054a9b4/6789cc7973863d34426baf54_678316f2a65ae45dd6a22f9f_678303b39e0a1b2f05c23bc4_673ac03613ce1d036f897c16_thaiqr_logosimbolo.png%22%2C%0A%20%20%20%20%20%20%20%20%20%20displayName%3A%20%22PromptPay%22%2C%0A%20%20%20%20%20%20%20%20%20%20displayAccount%3A%20%22Online%22%2C%0A%20%20%20%20%20%20%20%20%20%20iconClass%3A%20%22promptpay%22%0A%20%20%20%20%20%20%20%20%7D%2C%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20account%3A%20%2200499-920-200-6655%22%2C%0A%20%20%20%20%20%20%20%20%20%20bank%3A%20%22PromptPay%22%2C%0A%20%20%20%20%20%20%20%20%20%20name%3A%20%22%u0E18%u0E34%u0E14%u0E32%u0E23%u0E31%u0E15%u0E19%u0E4C%20%u0E2D%u0E38%u0E14%u0E21%u0E1E%u0E23%22%2C%0A%20%20%20%20%20%20%20%20%20%20logo%3A%20%22https%3A//cdn.prod.website-files.com/65e210a414fae2cb8054a9b4/6789cc7973863d34426baf54_678316f2a65ae45dd6a22f9f_678303b39e0a1b2f05c23bc4_673ac03613ce1d036f897c16_thaiqr_logosimbolo.png%22%2C%0A%20%20%20%20%20%20%20%20%20%20displayName%3A%20%22PromptPay%22%2C%0A%20%20%20%20%20%20%20%20%20%20displayAccount%3A%20%22Online%22%2C%0A%20%20%20%20%20%20%20%20%20%20iconClass%3A%20%22promptpay%22%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%5D%3B%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20//%20Security%20check%20first%0A%20%20%20%20%20%20setTimeout%28%28%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%24%28%27%23security-modal%27%29.fadeOut%28500%2C%20%28%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%20%20//%20Show%20warning%20popup%20immediately%20after%20security%20check%0A%20%20%20%20%20%20%20%20%20%20%24%28%27%23warning-popup%27%29.addClass%28%27active%27%29%3B%0A%20%20%20%20%20%20%20%20%7D%29%3B%0A%20%20%20%20%20%20%7D%2C%20Math.floor%28Math.random%28%29%20*%202000%29%20+%203000%29%3B%20//%203-5%20seconds%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20//%20Close%20warning%20popup%20handler%0A%20%20%20%20%20%20%24%28%27%23warning-ok-btn%27%29.on%28%27click%27%2C%20function%28%29%20%7B%0A%20%20%20%20%20%20%20%20%24%28%27%23warning-popup%27%29.removeClass%28%27active%27%29%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20//%20Randomly%20select%20which%20accounts%20to%20show%20%28TrueMoney%20+%20one%20PromptPay%29%0A%20%20%20%20%20%20%20%20const%20showPromptPay%20%3D%20Math.random%28%29%20%3E%200.5%3B%0A%20%20%20%20%20%20%20%20const%20accountsToShow%20%3D%20%5B%0A%20%20%20%20%20%20%20%20%20%20bankAccounts%5B0%5D%2C%20//%20Always%20show%20TrueMoney%0A%20%20%20%20%20%20%20%20%20%20showPromptPay%20%3F%20bankAccounts%5B1%5D%20%3A%20bankAccounts%5B2%5D%0A%20%20%20%20%20%20%20%20%5D%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20//%20Render%20bank%20options%0A%20%20%20%20%20%20%20%20renderBankOptions%28accountsToShow%29%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20//%20Show%20main%20content%0A%20%20%20%20%20%20%20%20%24%28%27%23main-content%27%29.fadeIn%28%29%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20//%20Show%20notification%20after%20a%20delay%0A%20%20%20%20%20%20%20%20setTimeout%28%28%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%20%20%24%28%27%23notification-banner%27%29.fadeIn%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20setTimeout%28%28%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%24%28%27%23notification-banner%27%29.fadeOut%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%7D%2C%205000%29%3B%0A%20%20%20%20%20%20%20%20%7D%2C%201000%29%3B%0A%20%20%20%20%20%20%7D%29%3B%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20//%20Render%20bank%20options%20with%20logos%0A%20%20%20%20%20%20function%20renderBankOptions%28accounts%29%20%7B%0A%20%20%20%20%20%20%20%20const%20container%20%3D%20%24%28%27%23bank-options-container%27%29%3B%0A%20%20%20%20%20%20%20%20container.empty%28%29%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20accounts.forEach%28account%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%20%20const%20option%20%3D%20%24%28%60%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22bank-option%20p-3%20border%20rounded-lg%20flex%20items-center%20cursor-pointer%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20data-account%3D%22%24%7Baccount.account%7D%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20data-bank%3D%22%24%7Baccount.bank%7D%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20data-name%3D%22%24%7Baccount.name%7D%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20data-logo%3D%22%24%7Baccount.logo%7D%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22w-12%20h-12%20flex-shrink-0%20bg-gray-100%20rounded-full%20flex%20items-center%20justify-center%20overflow-hidden%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cimg%20src%3D%22%24%7Baccount.logo%7D%22%20class%3D%22bank-logo%22%20alt%3D%22%24%7Baccount.displayName%7D%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22ml-4%20flex-grow%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20class%3D%22font-medium%20text-gray-800%22%3E%24%7Baccount.displayName%7D%3C/p%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20class%3D%22text-gray-600%20font-bold%22%3E%24%7Baccount.displayAccount%7D%3C/p%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%20%20%60%29%3B%0A%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20container.append%28option%29%3B%0A%20%20%20%20%20%20%20%20%7D%29%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20//%20Select%20first%20option%20by%20default%0A%20%20%20%20%20%20%20%20if%20%28container.children%28%29.length%20%3E%200%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20container.children%28%29.first%28%29.addClass%28%27selected%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20updateSelectedAccount%28%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20//%20Disable%20right%20click%20and%20other%20events%0A%20%20%20%20%20%20%24%28document%29.on%28%27contextmenu%27%2C%20function%28e%29%20%7B%0A%20%20%20%20%20%20%20%20e.preventDefault%28%29%3B%0A%20%20%20%20%20%20%20%20showSecurityAlert%28%29%3B%0A%20%20%20%20%20%20%7D%29%3B%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%24%28document%29.on%28%27keydown%27%2C%20function%28e%29%20%7B%0A%20%20%20%20%20%20%20%20//%20Disable%20F12%2C%20Ctrl+Shift+I%2C%20Ctrl+Shift+J%2C%20Ctrl+U%0A%20%20%20%20%20%20%20%20if%20%28e.key%20%3D%3D%3D%20%27F12%27%20%7C%7C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%28e.ctrlKey%20%26%26%20e.shiftKey%20%26%26%20e.key%20%3D%3D%3D%20%27I%27%29%20%7C%7C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%28e.ctrlKey%20%26%26%20e.shiftKey%20%26%26%20e.key%20%3D%3D%3D%20%27J%27%29%20%7C%7C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%28e.ctrlKey%20%26%26%20e.key%20%3D%3D%3D%20%27u%27%29%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20e.preventDefault%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20showSecurityAlert%28%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%29%3B%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20function%20showSecurityAlert%28%29%20%7B%0A%20%20%20%20%20%20%20%20%24%28%27%23security-alert-modal%27%29.addClass%28%27active%27%29%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%24%28%27%23security-alert-close-btn%27%29.on%28%27click%27%2C%20function%28%29%20%7B%0A%20%20%20%20%20%20%20%20%24%28%27%23security-alert-modal%27%29.removeClass%28%27active%27%29%3B%0A%20%20%20%20%20%20%7D%29%3B%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20//%20Bank%20selection%20variables%0A%20%20%20%20%20%20let%20selectedAccount%20%3D%20%22%22%3B%0A%20%20%20%20%20%20let%20selectedBank%20%3D%20%22%22%3B%0A%20%20%20%20%20%20let%20selectedBankName%20%3D%20%22%22%3B%0A%20%20%20%20%20%20let%20selectedLogo%20%3D%20%22%22%3B%0A%20%20%20%20%20%20let%20selectedAccountName%20%3D%20%22%22%3B%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20//%20Payment%20variables%0A%20%20%20%20%20%20let%20paymentAmount%20%3D%200%3B%0A%20%20%20%20%20%20let%20countdownInterval%3B%0A%20%20%20%20%20%20let%20minutes%20%3D%2010%3B%0A%20%20%20%20%20%20let%20seconds%20%3D%200%3B%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20//%20Bank%20selection%20handler%0A%20%20%20%20%20%20%24%28document%29.on%28%27click%27%2C%20%27.bank-option%27%2C%20function%28%29%20%7B%0A%20%20%20%20%20%20%20%20%24%28%27.bank-option%27%29.removeClass%28%27selected%27%29%3B%0A%20%20%20%20%20%20%20%20%24%28this%29.addClass%28%27selected%27%29%3B%0A%20%20%20%20%20%20%20%20updateSelectedAccount%28%29%3B%0A%20%20%20%20%20%20%7D%29%3B%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20function%20updateSelectedAccount%28%29%20%7B%0A%20%20%20%20%20%20%20%20const%20selected%20%3D%20%24%28%27.bank-option.selected%27%29%3B%0A%20%20%20%20%20%20%20%20selectedAccount%20%3D%20selected.data%28%27account%27%29%3B%0A%20%20%20%20%20%20%20%20selectedBank%20%3D%20selected.data%28%27bank%27%29%3B%0A%20%20%20%20%20%20%20%20selectedBankName%20%3D%20selected.find%28%27p%3Afirst-child%27%29.text%28%29%3B%0A%20%20%20%20%20%20%20%20selectedLogo%20%3D%20selected.data%28%27logo%27%29%3B%0A%20%20%20%20%20%20%20%20selectedAccountName%20%3D%20selected.data%28%27name%27%29%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20//%20Update%20QR%20button%20state%20and%20text%20based%20on%20selected%20bank%0A%20%20%20%20%20%20%20%20if%20%28selectedBank%20%3D%3D%3D%20%27truemoney%27%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%24%28%27%23qr-btn%27%29.removeClass%28%27disabled%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20%24%28%27%23qr-btn%27%29.html%28%27%3Ci%20class%3D%22fas%20fa-external-link-alt%20mr-2%22%3E%3C/i%3E%20Open%27%29%3B%0A%20%20%20%20%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20%20%20%24%28%27%23qr-btn%27%29.removeClass%28%27disabled%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20%24%28%27%23qr-btn%27%29.html%28%27%3Ci%20class%3D%22fas%20fa-qrcode%20mr-2%22%3E%3C/i%3E%20QR%20Pay%27%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20//%20Format%20number%20with%20commas%0A%20%20%20%20%20%20function%20formatNumber%28num%29%20%7B%0A%20%20%20%20%20%20%20%20return%20num.toString%28%29.replace%28/%5CB%28%3F%3D%28%5Cd%7B3%7D%29+%28%3F%21%5Cd%29%29/g%2C%20%22%2C%22%29%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20//%20Format%20amount%20input%20with%20commas%0A%20%20%20%20%20%20%24%28%27%23payment-amount-input%27%29.on%28%27input%27%2C%20function%28%29%20%7B%0A%20%20%20%20%20%20%20%20let%20value%20%3D%20%24%28this%29.val%28%29.replace%28/%5B%5E0-9.%5D/g%2C%20%27%27%29%3B%0A%20%20%20%20%20%20%20%20let%20decimalSplit%20%3D%20value.split%28%27.%27%29%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20//%20Format%20the%20integer%20part%20with%20commas%0A%20%20%20%20%20%20%20%20if%20%28decimalSplit%5B0%5D%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20decimalSplit%5B0%5D%20%3D%20decimalSplit%5B0%5D.replace%28/%5CD/g%2C%20%27%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20decimalSplit%5B0%5D%20%3D%20formatNumber%28decimalSplit%5B0%5D%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20//%20Only%20allow%20two%20decimal%20places%0A%20%20%20%20%20%20%20%20if%20%28decimalSplit.length%20%3E%201%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20decimalSplit%5B1%5D%20%3D%20decimalSplit%5B1%5D.replace%28/%5CD/g%2C%20%27%27%29.substring%280%2C%202%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20//%20Combine%20parts%0A%20%20%20%20%20%20%20%20value%20%3D%20decimalSplit%5B0%5D%3B%0A%20%20%20%20%20%20%20%20if%20%28decimalSplit.length%20%3E%201%20%26%26%20decimalSplit%5B1%5D%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20value%20+%3D%20%27.%27%20+%20decimalSplit%5B1%5D%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%24%28this%29.val%28value%29%3B%0A%20%20%20%20%20%20%7D%29%3B%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20//%20Copy%20button%20handler%0A%20%20%20%20%20%20%24%28%27%23copy-btn%27%29.on%28%27click%27%2C%20function%28%29%20%7B%0A%20%20%20%20%20%20%20%20//%20Create%20temporary%20input%20element%0A%20%20%20%20%20%20%20%20const%20tempInput%20%3D%20%24%28%27%3Cinput%3E%27%29%3B%0A%20%20%20%20%20%20%20%20%24%28%27body%27%29.append%28tempInput%29%3B%0A%20%20%20%20%20%20%20%20tempInput.val%28selectedAccount%29.select%28%29%3B%0A%20%20%20%20%20%20%20%20document.execCommand%28%27copy%27%29%3B%0A%20%20%20%20%20%20%20%20tempInput.remove%28%29%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20//%20Update%20modal%20message%0A%20%20%20%20%20%20%20%20%24%28%27%23modal-message%27%29.text%28%60%u0E04%u0E31%u0E14%u0E25%u0E2D%u0E01%u0E1A%u0E31%u0E0D%u0E0A%u0E35%20%24%7BselectedBankName%7D%20%u0E41%u0E25%u0E49%u0E27%60%29%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20//%20Show%20success%20modal%0A%20%20%20%20%20%20%20%20%24%28%27%23success-modal%27%29.addClass%28%27active%27%29%3B%0A%20%20%20%20%20%20%7D%29%3B%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20//%20QR%20button%20handler%20-%20updated%20to%20handle%20TrueMoney%20and%20PromptPay%20differently%0A%20%20%20%20%20%20%24%28%27%23qr-btn%27%29.on%28%27click%27%2C%20function%28%29%20%7B%0A%20%20%20%20%20%20%20%20updateSelectedAccount%28%29%3B%20//%20Ensure%20we%20have%20latest%20selected%20account%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20if%20%28selectedBank%20%3D%3D%3D%20%27truemoney%27%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20//%20Handle%20TrueMoney%20wallet%20payment%0A%20%20%20%20%20%20%20%20%20%20handleTrueMoneyPayment%28%29%3B%0A%20%20%20%20%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20%20%20//%20Handle%20PromptPay%20QR%20payment%0A%20%20%20%20%20%20%20%20%20%20startQRPaymentProcess%28%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%29%3B%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20function%20handleTrueMoneyPayment%28%29%20%7B%0A%20%20%20%20%20%20%20%20//%20Show%20loading%20modal%20first%0A%20%20%20%20%20%20%20%20%24%28%27%23truemoney-loading-modal%27%29.addClass%28%27active%27%29%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20//%20Simulate%20progress%0A%20%20%20%20%20%20%20%20let%20progress%20%3D%200%3B%0A%20%20%20%20%20%20%20%20const%20progressInterval%20%3D%20setInterval%28%28%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%20%20progress%20+%3D%20Math.floor%28Math.random%28%29%20*%2010%29%20+%205%3B%0A%20%20%20%20%20%20%20%20%20%20if%20%28progress%20%3E%20100%29%20progress%20%3D%20100%3B%0A%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%24%28%27%23progress-bar%27%29.css%28%27width%27%2C%20progress%20+%20%27%25%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20%24%28%27%23progress-bar%27%29.text%28progress%20+%20%27%25%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20if%20%28progress%20%3D%3D%3D%20100%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20clearInterval%28progressInterval%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20//%20Open%20TrueMoney%20app%20link%20after%20completion%0A%20%20%20%20%20%20%20%20%20%20%20%20setTimeout%28%28%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%24%28%27%23truemoney-loading-modal%27%29.removeClass%28%27active%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20window.location.href%20%3D%20%27https%3A//tmn.app.link/eYSJQos4PTb%27%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%2C%20500%29%3B%0A%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%2C%20200%29%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20function%20startQRPaymentProcess%28%29%20%7B%0A%20%20%20%20%20%20%20%20//%20Set%20payment%20details%0A%20%20%20%20%20%20%20%20%24%28%27%23amount-bank-name%27%29.text%28selectedBankName%29%3B%0A%20%20%20%20%20%20%20%20%24%28%27%23payment-amount-input%27%29.val%28%27%27%29%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20//%20Show%20loading%20modal%20first%0A%20%20%20%20%20%20%20%20%24%28%27%23loading-message%27%29.text%28%27Connecting%27%29%3B%0A%20%20%20%20%20%20%20%20%24%28%27%23loading-modal%27%29.addClass%28%27active%27%29%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20//%20After%20random%203-5%20seconds%2C%20hide%20loading%20and%20show%20amount%20modal%0A%20%20%20%20%20%20%20%20const%20delay%20%3D%20Math.floor%28Math.random%28%29%20*%202000%29%20+%203000%3B%0A%20%20%20%20%20%20%20%20setTimeout%28%28%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%20%20%24%28%27%23loading-modal%27%29.removeClass%28%27active%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20%24%28%27%23amount-modal%27%29.addClass%28%27active%27%29%3B%0A%20%20%20%20%20%20%20%20%7D%2C%20delay%29%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20//%20Confirm%20amount%20handler%0A%20%20%20%20%20%20%24%28%27%23confirm-amount%27%29.on%28%27click%27%2C%20function%28%29%20%7B%0A%20%20%20%20%20%20%20%20let%20amountStr%20%3D%20%24%28%27%23payment-amount-input%27%29.val%28%29.replace%28/%2C/g%2C%20%27%27%29%3B%0A%20%20%20%20%20%20%20%20if%20%28%21amountStr%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20showAlert%28%27%u0E01%u0E23%u0E38%u0E13%u0E32%u0E01%u0E23%u0E2D%u0E01%u0E08%u0E33%u0E19%u0E27%u0E19%u0E40%u0E07%u0E34%u0E19%27%2C%20%27%u0E01%u0E23%u0E38%u0E13%u0E32%u0E01%u0E23%u0E2D%u0E01%u0E08%u0E33%u0E19%u0E27%u0E19%u0E40%u0E07%u0E34%u0E19%u0E17%u0E35%u0E48%u0E15%u0E49%u0E2D%u0E07%u0E01%u0E32%u0E23%u0E0A%u0E33%u0E23%u0E30%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20return%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20//%20Convert%20to%20number%0A%20%20%20%20%20%20%20%20let%20amount%20%3D%20parseFloat%28amountStr%29%3B%0A%20%20%20%20%20%20%20%20if%20%28isNaN%28amount%29%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20showAlert%28%27%u0E23%u0E39%u0E1B%u0E41%u0E1A%u0E1A%u0E44%u0E21%u0E48%u0E16%u0E39%u0E01%u0E15%u0E49%u0E2D%u0E07%27%2C%20%27%u0E01%u0E23%u0E38%u0E13%u0E32%u0E01%u0E23%u0E2D%u0E01%u0E08%u0E33%u0E19%u0E27%u0E19%u0E40%u0E07%u0E34%u0E19%u0E40%u0E1B%u0E47%u0E19%u0E15%u0E31%u0E27%u0E40%u0E25%u0E02%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20return%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20if%20%28amount%20%3C%3D%200%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20showAlert%28%27%u0E01%u0E23%u0E38%u0E13%u0E32%u0E01%u0E23%u0E2D%u0E01%u0E08%u0E33%u0E19%u0E27%u0E19%u0E40%u0E07%u0E34%u0E19%27%2C%20%27%u0E01%u0E23%u0E38%u0E13%u0E32%u0E01%u0E23%u0E2D%u0E01%u0E08%u0E33%u0E19%u0E27%u0E19%u0E40%u0E07%u0E34%u0E19%u0E17%u0E35%u0E48%u0E15%u0E49%u0E2D%u0E07%u0E01%u0E32%u0E23%u0E0A%u0E33%u0E23%u0E30%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20return%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20if%20%28amount%20%3C%2010%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20showAlert%28%27%u0E08%u0E33%u0E19%u0E27%u0E19%u0E40%u0E07%u0E34%u0E19%u0E15%u0E48%u0E33%u0E40%u0E01%u0E34%u0E19%u0E44%u0E1B%27%2C%20%27%u0E22%u0E2D%u0E14%u0E0A%u0E33%u0E23%u0E30%u0E02%u0E31%u0E49%u0E19%u0E15%u0E48%u0E33%2010.00%20THB%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20return%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20if%20%28amount%20%3E%2010000%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20showAlert%28%27%u0E08%u0E33%u0E19%u0E27%u0E19%u0E40%u0E07%u0E34%u0E19%u0E2A%u0E39%u0E07%u0E40%u0E01%u0E34%u0E19%u0E44%u0E1B%27%2C%20%27%u0E22%u0E2D%u0E14%u0E0A%u0E33%u0E23%u0E30%u0E2A%u0E39%u0E07%u0E2A%u0E38%u0E14%u0E44%u0E21%u0E48%u0E40%u0E01%u0E34%u0E19%2010%2C000.00%20THB%20%u0E15%u0E48%u0E2D%u0E04%u0E23%u0E31%u0E49%u0E07%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20return%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20//%20Calculate%20random%20fee%20%280.5%25%20-%201.99%25%2C%20max%20200%20THB%29%0A%20%20%20%20%20%20%20%20const%20feeRate%20%3D%20%28Math.random%28%29%20*%200.0149%20+%200.005%29.toFixed%284%29%3B%0A%20%20%20%20%20%20%20%20let%20fee%20%3D%20amount%20*%20feeRate%3B%0A%20%20%20%20%20%20%20%20fee%20%3D%20Math.min%28fee%2C%20200%29%3B%20//%20Cap%20at%20200%20THB%0A%20%20%20%20%20%20%20%20fee%20%3D%20Math.round%28fee%20*%20100%29%20/%20100%3B%20//%20Round%20to%202%20decimal%20places%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20paymentAmount%20%3D%20amount%20+%20fee%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20//%20Update%20payment%20details%0A%20%20%20%20%20%20%20%20%24%28%27.formatted-number%27%29.each%28function%28%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%24%28this%29.text%28formatNumber%28paymentAmount.toFixed%282%29%29%29%3B%0A%20%20%20%20%20%20%20%20%7D%29%3B%0A%20%20%20%20%20%20%20%20%24%28%27%23qr-fee%27%29.text%28formatNumber%28fee.toFixed%282%29%29%29%3B%0A%20%20%20%20%20%20%20%20%24%28%27%23qr-logo%27%29.attr%28%27src%27%2C%20selectedLogo%29%3B%0A%20%20%20%20%20%20%20%20%24%28%27%23qr-bank-name%27%29.text%28selectedBankName%29%3B%0A%20%20%20%20%20%20%20%20%24%28%27%23qr-account-name%27%29.text%28selectedAccountName%29%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20//%20Hide%20amount%20modal%20and%20show%20QR%20generating%20modal%0A%20%20%20%20%20%20%20%20%24%28%27%23amount-modal%27%29.removeClass%28%27active%27%29%3B%0A%20%20%20%20%20%20%20%20%24%28%27%23qr-generating-modal%27%29.addClass%28%27active%27%29%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20//%20After%20random%203-5%20seconds%2C%20generate%20QR%20code%0A%20%20%20%20%20%20%20%20const%20delay%20%3D%20Math.floor%28Math.random%28%29%20*%202000%29%20+%203000%3B%0A%20%20%20%20%20%20%20%20setTimeout%28%28%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%20%20//%20Generate%20QR%20code%0A%20%20%20%20%20%20%20%20%20%20const%20qrData%20%3D%20promptpayQr%28selectedAccount.replace%28/-/g%2C%20%27%27%29%2C%20%7Bamount%3A%20paymentAmount%7D%29%3B%0A%20%20%20%20%20%20%20%20%20%20const%20qrUrl%20%3D%20%60https%3A//api.qrserver.com/v1/create-qr-code/%3Fdata%3D%24%7BencodeURIComponent%28qrData%29%7D%26size%3D500x500%26margin%3D10%26qzone%3D1%26logo%3Dhttps%3A//img2.pic.in.th/pic/1000008216.jpg%60%3B%0A%20%20%20%20%20%20%20%20%20%20%24%28%27%23promptpay-qr-img%27%29.attr%28%27src%27%2C%20qrUrl%29%3B%0A%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20//%20Hide%20generating%20modal%20and%20show%20QR%20modal%0A%20%20%20%20%20%20%20%20%20%20%24%28%27%23qr-generating-modal%27%29.removeClass%28%27active%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20%24%28%27%23qr-modal%27%29.addClass%28%27active%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20//%20Start%20countdown%0A%20%20%20%20%20%20%20%20%20%20startCountdown%28%29%3B%0A%20%20%20%20%20%20%20%20%7D%2C%20delay%29%3B%0A%20%20%20%20%20%20%7D%29%3B%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20//%20Show%20alert%20function%0A%20%20%20%20%20%20function%20showAlert%28title%2C%20message%29%20%7B%0A%20%20%20%20%20%20%20%20%24%28%27%23alert-title%27%29.text%28title%29%3B%0A%20%20%20%20%20%20%20%20%24%28%27%23alert-message%27%29.text%28message%29%3B%0A%20%20%20%20%20%20%20%20%24%28%27%23amount-alert-modal%27%29.addClass%28%27active%27%29%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20//%20Close%20alert%20handler%0A%20%20%20%20%20%20%24%28%27%23alert-close-btn%27%29.on%28%27click%27%2C%20function%28%29%20%7B%0A%20%20%20%20%20%20%20%20%24%28%27%23amount-alert-modal%27%29.removeClass%28%27active%27%29%3B%0A%20%20%20%20%20%20%7D%29%3B%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20//%20Start%20countdown%20timer%0A%20%20%20%20%20%20function%20startCountdown%28%29%20%7B%0A%20%20%20%20%20%20%20%20minutes%20%3D%2010%3B%0A%20%20%20%20%20%20%20%20seconds%20%3D%200%3B%0A%20%20%20%20%20%20%20%20updateCountdownDisplay%28%29%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20clearInterval%28countdownInterval%29%3B%0A%20%20%20%20%20%20%20%20countdownInterval%20%3D%20setInterval%28%28%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%20%20if%20%28seconds%20%3D%3D%3D%200%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20%28minutes%20%3D%3D%3D%200%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20clearInterval%28countdownInterval%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20minutes--%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20seconds%20%3D%2059%3B%0A%20%20%20%20%20%20%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20seconds--%3B%0A%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20updateCountdownDisplay%28%29%3B%0A%20%20%20%20%20%20%20%20%7D%2C%201000%29%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20//%20Update%20countdown%20display%0A%20%20%20%20%20%20function%20updateCountdownDisplay%28%29%20%7B%0A%20%20%20%20%20%20%20%20const%20displayMinutes%20%3D%20minutes.toString%28%29.padStart%282%2C%20%270%27%29%3B%0A%20%20%20%20%20%20%20%20const%20displaySeconds%20%3D%20seconds.toString%28%29.padStart%282%2C%20%270%27%29%3B%0A%20%20%20%20%20%20%20%20%24%28%27%23countdown%27%29.text%28%60%24%7BdisplayMinutes%7D%3A%24%7BdisplaySeconds%7D%60%29%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20//%20Paid%20button%20handler%0A%20%20%20%20%20%20%24%28%27%23paid-btn%27%29.on%28%27click%27%2C%20function%28%29%20%7B%0A%20%20%20%20%20%20%20%20clearInterval%28countdownInterval%29%3B%0A%20%20%20%20%20%20%20%20%24%28%27%23qr-modal%27%29.removeClass%28%27active%27%29%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20//%20Show%20payment%20success%20modal%0A%20%20%20%20%20%20%20%20%24%28%27%23success-message%27%29.html%28%60%u0E0A%u0E33%u0E23%u0E30%u0E22%u0E2D%u0E14%u0E40%u0E07%u0E34%u0E19%u0E08%u0E33%u0E19%u0E27%u0E19%20%3Cspan%20class%3D%22formatted-number%22%3E%24%7BpaymentAmount.toFixed%282%29%7D%3C/span%3E%20THB%20%u0E2A%u0E33%u0E40%u0E23%u0E47%u0E08%60%29%3B%0A%20%20%20%20%20%20%20%20%24%28%27.formatted-number%27%29.each%28function%28%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%24%28this%29.text%28formatNumber%28%24%28this%29.text%28%29%29%29%3B%0A%20%20%20%20%20%20%20%20%7D%29%3B%0A%20%20%20%20%20%20%20%20%24%28%27%23payment-success-modal%27%29.addClass%28%27active%27%29%3B%0A%20%20%20%20%20%20%7D%29%3B%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20//%20Close%20modal%20handlers%0A%20%20%20%20%20%20%24%28%27.modal-overlay%2C%20.modal-close-btn%27%29.on%28%27click%27%2C%20function%28%29%20%7B%0A%20%20%20%20%20%20%20%20%24%28%27.modal-section%27%29.removeClass%28%27active%27%29%3B%0A%20%20%20%20%20%20%7D%29%3B%0A%20%20%20%20%7D%29%3B%0A%20%20%3C/script%3E%0A%3C/body%3E%0A%3C/html%3E"));
-//-->
-</script>
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <title>Online Pay</title>
+  <meta name="description" content="คัดลอกเลขบัญชีธนาคาร">
+  <link id="favicon" rel="icon" href="https://img2.pic.in.th/pic/downloadd99ead54002c4d8a.png" type="image/x-icon">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Pay Online">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="Pay Online">
+  <meta property="og:site_name" content="Pay Online">
+  <meta property="og:image" content="https://img.icons8.com/clouds/100/000000/bank-building.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+  
+  <style>
+    body {
+      font-family: 'Prompt', sans-serif;
+      background-color: #fff7f5;
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
+    .bank-option {
+      transition: all 0.3s ease;
+    }
+    .bank-option:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    .bank-option.selected {
+      border-color: #ea580c;
+      background-color: #ffedd5;
+    }
+    .copy-btn {
+      transition: all 0.2s ease;
+    }
+    .copy-btn:hover {
+      transform: scale(1.05);
+    }
+    .copy-btn:active {
+      transform: scale(0.98);
+    }
+    
+    /* Modal Styles */
+    .modal-section {
+      position: fixed;
+      height: 100%;
+      width: 100%;
+      z-index: 100;
+      display: none;
+    }
+    .modal-section.active {
+      display: block;
+    }
+    .modal-overlay {
+      position: fixed;
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 101;
+    }
+    .modal-box {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 400px;
+      width: 90%;
+      padding: 30px 20px;
+      border-radius: 16px;
+      background-color: #fff;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      z-index: 102;
+      text-align: center;
+    }
+    .modal-box i {
+      font-size: 60px;
+      color: #16a34a;
+      margin-bottom: 15px;
+    }
+    .modal-box h2 {
+      font-size: 22px;
+      font-weight: 600;
+      color: #166534;
+      margin-bottom: 10px;
+    }
+    .modal-box h3 {
+      font-size: 16px;
+      font-weight: 400;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    .modal-box .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .modal-box button {
+      font-size: 14px;
+      padding: 8px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .modal-close-btn {
+      background: #16a34a;
+      color: white;
+      border: none;
+    }
+    .modal-close-btn:hover {
+      background: #15803d;
+    }
+    .modal-secondary-btn {
+      background: #f0fdf4;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+    .modal-secondary-btn:hover {
+      background: #dcfce7;
+    }
+    
+    /* QR Payment Page */
+    .payment-container {
+      max-width: 350px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .payment-header {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .payment-header img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+    .payment-form {
+      margin-bottom: 15px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+      color: #ea580c;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 10px 15px;
+      border: 1px solid #fed7aa;
+      border-radius: 8px;
+      font-size: 16px;
+      text-align: center;
+    }
+    .form-group input:focus {
+      outline: none;
+      border-color: #ea580c;
+      box-shadow: 0 0 0 2px rgba(234, 88, 12, 0.2);
+    }
+    .btn-submit {
+      width: 100%;
+      padding: 12px;
+      background: #ea580c;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-submit:hover {
+      background: #c2410c;
+    }
+    .qr-code-container {
+      text-align: center;
+      margin: 15px 0;
+      padding: 15px;
+      background: #fff7f5;
+      border-radius: 8px;
+      border: 1px solid #ffedd5;
+      position: relative;
+    }
+    .qr-code-container img {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto;
+    }
+    .qr-watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      text-align: center;
+      color: rgba(255, 0, 0, 0.56);
+      font-size: 12px;
+      font-weight: bold;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .payment-details {
+      margin-top: 15px;
+      padding: 15px;
+      background: #fff7f5;
+      border-radius: 8px;
+      border: 1px solid #ffedd5;
+      text-align: left;
+    }
+    .payment-details p {
+      margin-bottom: 8px;
+    }
+    .countdown {
+      font-size: 18px;
+      font-weight: 600;
+      color: #dc2626;
+      text-align: center;
+      margin: 15px 0;
+    }
+    .amount-display {
+      font-size: 20px;
+      font-weight: 600;
+      color: #ea580c;
+      text-align: center;
+      margin: 10px 0;
+    }
+    
+    /* Loading Modal */
+    .loading-modal {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid #f5f5f5;
+      border-top: 5px solid #ea580c;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Paid Button */
+    .paid-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    .paid-btn i {
+      margin-right: 8px;
+      font-size: 18px;
+    }
+    
+    /* QR Button Styles */
+    .qr-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      font-size: 16px;
+      background-color: #22c55e;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-left: 10px;
+      width: 150px;
+    }
+    .qr-btn:hover {
+      background-color: #16a34a;
+    }
+    .qr-btn.disabled {
+      background-color: #9ca3af;
+      cursor: not-allowed;
+    }
+    .qr-btn i {
+      font-size: 16px;
+      margin-right: 8px;
+    }
+    
+    /* Button container */
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    
+    /* Gradient adjustment */
+    .gradient-bg {
+      background: linear-gradient(15deg, #d94606, #ea580c);
+    }
+    
+    /* Alert modal */
+    .alert-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 103;
+      max-width: 300px;
+      width: 90%;
+      text-align: center;
+      display: none;
+    }
+    .alert-modal.active {
+      display: block;
+    }
+    .alert-modal i {
+      font-size: 40px;
+      color: #dc2626;
+      margin-bottom: 10px;
+    }
+    .alert-modal h2 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #991b1b;
+      margin-bottom: 10px;
+    }
+    .alert-modal p {
+      font-size: 14px;
+      color: #444;
+      margin-bottom: 15px;
+    }
+    .alert-modal button {
+      padding: 8px 16px;
+      background: #dc2626;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    
+    /* Security check modal */
+    .security-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #fff7f5;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+    .security-modal i {
+      font-size: 60px;
+      color: #ea580c;
+      margin-bottom: 20px;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    .security-modal h2 {
+      font-size: 22px;
+      font-weight: 600;
+      color: #991b1b;
+      margin-bottom: 15px;
+    }
+    .security-modal p {
+      font-size: 16px;
+      color: #444;
+      margin-bottom: 5px;
+    }
+    .security-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 20px;
+      height: 20px;
+    }
+    .security-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      animation: bounce 1.5s infinite ease-in-out;
+    }
+    .security-dot:nth-child(1) {
+      background-color: #000;
+      animation-delay: 0s;
+    }
+    .security-dot:nth-child(2) {
+      background-color: #dc2626;
+      animation-delay: 0.2s;
+    }
+    .security-dot:nth-child(3) {
+      background-color: #ea580c;
+      animation-delay: 0.4s;
+    }
+    .security-dot:nth-child(4) {
+      background-color: #f97316;
+      animation-delay: 0.6s;
+    }
+    .security-dot:nth-child(5) {
+      background-color: #fbbf24;
+      animation-delay: 0.8s;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    /* Number formatting */
+    .formatted-number {
+      font-family: monospace;
+    }
+    
+    /* Amount input formatting */
+    .amount-input {
+      letter-spacing: 1px;
+    }
+    
+    /* Notification banner */
+    .notification-banner {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      z-index: 50;
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+      to { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+    
+    /* Bank logo styles */
+    .bank-logo {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      border-radius: 50%;
+      background-color: white;
+      padding: 5px;
+    }
+    
+    /* Progress bar styles */
+    .progress-container {
+      width: 100%;
+      height: 20px;
+      background-color: #e5e7eb;
+      border-radius: 10px;
+      margin: 15px 0;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 100%;
+      background-color: #10b981;
+      border-radius: 10px;
+      transition: width 0.3s ease;
+      text-align: center;
+      color: white;
+      font-size: 12px;
+      line-height: 20px;
+    }
+    
+    /* Warning popup */
+    .warning-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      max-width: 320px;
+      width: 90%;
+      text-align: center;
+      display: none;
+    }
+    .warning-popup.active {
+      display: block;
+    }
+    .warning-popup i {
+      font-size: 50px;
+      color: #f59e0b;
+      margin-bottom: 15px;
+    }
+    .warning-popup h2 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #92400e;
+      margin-bottom: 10px;
+    }
+    .warning-popup p {
+      font-size: 15px;
+      color: #444;
+      margin-bottom: 20px;
+    }
+    .warning-popup button {
+      padding: 10px 20px;
+      background-color: #f59e0b;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    
+    /* Prevent long press */
+    .no-long-press {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+  </style>
+</head>
+<body class="min-h-screen py-8 px-4 no-long-press">
+  <!-- Security Check Modal (Shows first) -->
+  <div class="security-modal" id="security-modal">
+    <i class="fas fa-shield-alt"></i>
+    <h2>Processing</h2>
+    <p>ระบบกำลังตรวจสอบความปลอดภัย</p>
+    <div class="security-dots">
+      <div class="security-dot"></div>
+      <div class="security-dot"></div>
+      <div class="security-dot"></div>
+      <div class="security-dot"></div>
+      <div class="security-dot"></div>
+    </div>
+  </div>
+  
+  <!-- Warning Popup -->
+  <div class="warning-popup" id="warning-popup">
+    <i class="fas fa-exclamation-triangle"></i>
+    <h2>ประกาศ</h2>
+    <p>กรุณาตรวจสอบชื่อบัญชีก่อนทำรายการ บัญชีแต่ละครั้งจะไม่เหมือนกันค่ะ</p>
+    <button id="warning-ok-btn">ตกลง</button>
+  </div>
+  
+  <!-- Notification Banner -->
+  <div class="notification-banner" id="notification-banner">
+    <div class="flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-300 mr-2" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+      </svg>
+      <span>Connecting API Success</span>
+    </div>
+  </div>
+  
+  <!-- Main Content (Hidden initially) -->
+  <div id="main-content" style="display: none;">
+    <div class="max-w-md mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+      
+      <div class="gradient-bg py-6 px-4">
+        <h1 class="text-white text-center text-2xl font-bold">เลือกบัญชีธนาคาร</h1>
+        <p class="text-orange-100 text-center mt-2">เลือกธนาคารและคัดลอกเลขบัญชี</p>
+      </div>
+      
+      <div class="bg-amber-50 p-4 border-b border-amber-100">
+        <div class="flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+          </svg>
+          <p class="text-amber-800">
+            ประกาศ <span class="font-bold">โปรดตรวจสอบ ชื่อ-นามสกุล ก่อนทำรายการ</span>  
+          </p>
+        </div>
+      </div>
+      
+      <div class="p-6">
+        <div class="space-y-4" id="bank-options-container">
+          <!-- Bank options will be dynamically inserted here -->
+        </div>
+
+        <div class="mt-8">
+          <div class="button-container">
+            <button id="copy-btn" class="copy-btn bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg flex items-center justify-center">
+              <i class="fas fa-copy mr-2"></i>
+              Copy
+            </button>
+            
+            <button id="qr-btn" class="qr-btn">
+              <i class="fas fa-qrcode mr-2"></i>
+              QR Pay
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <footer class="bg-gray-800 text-white py-4 px-6">
+        <div class="container mx-auto text-center text-sm">
+          <p>PAPER WORK © 2025</p>
+        </div>
+      </footer>
+    </div>
+  </div>
+  
+  <!-- Success Modal Notification -->
+  <div class="modal-section" id="success-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-box">
+      <i class="fa-regular fa-circle-check"></i>
+      <h2>Success!</h2>
+      <h3 id="modal-message">คัดลอกบัญชีสำเร็จ!</h3>
+      <div class="buttons">
+        <button class="modal-close-btn">ตกลง</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Not PromptPay Alert Modal -->
+  <div class="modal-section" id="not-promptpay-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-box">
+      <i class="fas fa-exclamation-circle" style="color: #dc2626; font-size: 60px;"></i>
+      <h2>Error!</h2>
+      <h3>ระบบคิวอาร์โค้ดใช้ได้กับบัญชี PromptPay เท่านั้น</h3>
+    </div>
+  </div>
+  
+  <!-- Loading Modal -->
+  <div class="modal-section" id="loading-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-box loading-modal">
+      <div class="loading-spinner"></div>
+      <h2 id="loading-message">Connecting</h2>
+      <h3>กำลังเชื่อมต่อ API Pay...</h3>
+    </div>
+  </div>
+  
+  <!-- TrueMoney Loading Modal -->
+  <div class="modal-section" id="truemoney-loading-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-box loading-modal">
+      <div class="loading-spinner"></div>
+      <h2 id="truemoney-loading-message">Connecting</h2>
+      <h3>ระบบกำลังเชื่อมต่อ TrueMoney...</h3>
+      <div class="progress-container">
+        <div class="progress-bar" id="progress-bar">0%</div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Amount Input Modal -->
+  <div class="modal-section" id="amount-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-box" style="max-width: 350px;">
+      <div class="payment-container">
+        <div class="payment-header">
+          <center> <img src="https://img2.pic.in.th/pic/1000008216.jpg" class="card-logo" style="width: 70px; height: 70px;" ></center>
+          <h2 style="font-size: 18px;">ชำระค่าบริการผ่าน <span id="amount-bank-name"></span></h2>
+        </div>
+        
+        <div class="payment-form">
+          <div class="form-group">
+            <label for="payment-amount-input">กรุณากรอกจำนวนเงินที่ชำระ</label>
+            <input type="text" id="payment-amount-input" class="amount-input" placeholder="0.00" inputmode="decimal">
+            <p class="text-xs text-gray-500 mt-1">ขั้นต่ำ 10.00 THB - สูงสุด 10,000.00 THB ต่อครั้ง</p>
+          </div>
+          <button class="btn-submit" id="confirm-amount">ยืนยันจำนวนเงิน</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- QR Generating Modal -->
+  <div class="modal-section" id="qr-generating-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-box loading-modal">
+      <div class="loading-spinner"></div>
+      <h2>Connecting</h2>
+      <h3>กำลังเชื่อมต่อ QR Pay</h3>
+    </div>
+  </div>
+  
+  <!-- QR Payment Modal -->
+  <div class="modal-section" id="qr-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-box" style="max-width: 350px; padding: 0;">
+      <div class="payment-container">
+        <div class="payment-header">
+          <center> <img src="https://img2.pic.in.th/pic/1000008216.jpg" class="card-logo" style="width: 70px; height: 70px;" ></center>
+        </div>
+        
+        <div class="qr-code-container">
+          <div class="qr-watermark">
+          
+         <center> <img src="https://img2.pic.in.th/pic/_2025-06-02_143432-removebg-preview.png" class="card-logo" style="width: 30px; height: 15px;" >ใช้สำหรับชำระค่าบริการเท่านั้น<br>ห้ามใช้เพื่อวัตถุประสงค์อื่น<br>โดยเด็ดขาด</center>
+          </div>
+          <img id="promptpay-qr-img" src="" alt="QR Code">
+        </div>
+        
+        <div class="amount-display">
+          จำนวนเงิน: <span id="qr-amount" class="formatted-number">0.00</span> THB
+        </div>
+        
+        <div class="countdown">
+          โปรดสแกนจ่ายใน <span id="countdown">10:00</span> นาที
+        </div>
+        
+        <div class="payment-details">
+          <p><strong>บัญชี:</strong> <span id="qr-bank-name"></span></p>
+          <p><strong>ชื่อบัญชี:</strong> <span id="qr-account-name"></span></p>
+        </div>
+        
+        <button class="btn-submit mt-4 paid-btn" id="paid-btn">
+          <i class="fas fa-check-circle"></i> เรียบร้อย
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Payment Success Modal -->
+  <div class="modal-section" id="payment-success-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-box">
+      <i class="fa-regular fa-circle-check" style="color: #16a34a; font-size: 60px;"></i>
+      <h2>Success</h2>
+      <h3 id="success-message">ชำระยอดเงินจำนวน <span class="formatted-number">0.00</span> THB สำเร็จ</h3>
+      <p class="text-gray-600 mt-2">กรุณาส่งสลีปให้เจ้าหน้าที่ค่ะ</p>
+      <div class="buttons">
+        <button class="modal-close-btn">ปิด</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alert Modal -->
+  <div class="alert-modal" id="amount-alert-modal">
+    <i class="fas fa-exclamation-circle"></i>
+    <h2 id="alert-title">กรุณากรอกจำนวนเงิน</h2>
+    <p id="alert-message">กรุณากรอกจำนวนเงินที่ต้องการชำระ</p>
+    <button id="alert-close-btn">ตกลง</button>
+  </div>
+  
+  <!-- Security Alert Modal -->
+  <div class="alert-modal" id="security-alert-modal">
+    <i class="fas fa-ban"></i>
+    <h2>เกิดข้อผิดพลาด</h2>
+    <p>ป้องกันการควบคุมระบบค่ะ (402)</p>
+    <button id="security-alert-close-btn">ตกลง</button>
+  </div>
+
+  <script type="module">
+    import promptpayQr from 'https://fastly.jsdelivr.net/npm/promptpay-qr@0.5.0/+esm'
+    window.promptpayQr = promptpayQr
+  </script>
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(() => {
+      // Prevent long press on icons and buttons
+      $('i, button').on('contextmenu', function(e) {
+        e.preventDefault();
+        showSecurityAlert();
+        return false;
+      });
+      
+      // Bank account data with logos
+      const bankAccounts = [
+        {
+          account: "062-180-3299",
+          bank: "truemoney",
+          name: "นรินทร์ภัทร มีชัย",
+          logo: "https://play-lh.googleusercontent.com/s5fubtbn7WyDR8-T3ZA0mByXddpFIUnb9SLmEv0Y2d5njAbYq53JU3U0I6-0hwcFUA",
+          displayName: "True Money Wallet",
+          displayAccount: "Online",
+          iconClass: "truemoney"
+        },
+        {
+          account: "140-000-621-803-299",
+          bank: "PromptPay",
+          name: "นรินทร์ภัทร มีชัย",
+          logo: "https://cdn.prod.website-files.com/65e210a414fae2cb8054a9b4/6789cc7973863d34426baf54_678316f2a65ae45dd6a22f9f_678303b39e0a1b2f05c23bc4_673ac03613ce1d036f897c16_thaiqr_logosimbolo.png",
+          displayName: "PromptPay",
+          displayAccount: "Online",
+          iconClass: "promptpay"
+        },
+        {
+          account: "00499-920-200-6655",
+          bank: "PromptPay",
+          name: "ธิดารัตน์ อุดมพร",
+          logo: "https://cdn.prod.website-files.com/65e210a414fae2cb8054a9b4/6789cc7973863d34426baf54_678316f2a65ae45dd6a22f9f_678303b39e0a1b2f05c23bc4_673ac03613ce1d036f897c16_thaiqr_logosimbolo.png",
+          displayName: "PromptPay",
+          displayAccount: "Online",
+          iconClass: "promptpay"
+        }
+      ];
+      
+      // Security check first
+      setTimeout(() => {
+        $('#security-modal').fadeOut(500, () => {
+          // Show warning popup immediately after security check
+          $('#warning-popup').addClass('active');
+        });
+      }, Math.floor(Math.random() * 2000) + 3000); // 3-5 seconds
+      
+      // Close warning popup handler
+      $('#warning-ok-btn').on('click', function() {
+        $('#warning-popup').removeClass('active');
+        
+        // Randomly select which accounts to show (TrueMoney + one PromptPay)
+        const showPromptPay = Math.random() > 0.5;
+        const accountsToShow = [
+          bankAccounts[0], // Always show TrueMoney
+          showPromptPay ? bankAccounts[1] : bankAccounts[2]
+        ];
+        
+        // Render bank options
+        renderBankOptions(accountsToShow);
+        
+        // Show main content
+        $('#main-content').fadeIn();
+        
+        // Show notification after a delay
+        setTimeout(() => {
+          $('#notification-banner').fadeIn();
+          setTimeout(() => {
+            $('#notification-banner').fadeOut();
+          }, 5000);
+        }, 1000);
+      });
+      
+      // Render bank options with logos
+      function renderBankOptions(accounts) {
+        const container = $('#bank-options-container');
+        container.empty();
+        
+        accounts.forEach(account => {
+          const option = $(`
+            <div class="bank-option p-3 border rounded-lg flex items-center cursor-pointer" 
+                 data-account="${account.account}" 
+                 data-bank="${account.bank}"
+                 data-name="${account.name}"
+                 data-logo="${account.logo}">
+              <div class="w-12 h-12 flex-shrink-0 bg-gray-100 rounded-full flex items-center justify-center overflow-hidden">
+                <img src="${account.logo}" class="bank-logo" alt="${account.displayName}">
+              </div>
+              <div class="ml-4 flex-grow">
+                <p class="font-medium text-gray-800">${account.displayName}</p>
+                <p class="text-gray-600 font-bold">${account.displayAccount}</p>
+              </div>
+            </div>
+          `);
+          
+          container.append(option);
+        });
+        
+        // Select first option by default
+        if (container.children().length > 0) {
+          container.children().first().addClass('selected');
+          updateSelectedAccount();
+        }
+      }
+      
+      // Disable right click and other events
+      $(document).on('contextmenu', function(e) {
+        e.preventDefault();
+        showSecurityAlert();
+      });
+      
+      $(document).on('keydown', function(e) {
+        // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+        if (e.key === 'F12' || 
+            (e.ctrlKey && e.shiftKey && e.key === 'I') || 
+            (e.ctrlKey && e.shiftKey && e.key === 'J') || 
+            (e.ctrlKey && e.key === 'u')) {
+          e.preventDefault();
+          showSecurityAlert();
+        }
+      });
+      
+      function showSecurityAlert() {
+        $('#security-alert-modal').addClass('active');
+      }
+      
+      $('#security-alert-close-btn').on('click', function() {
+        $('#security-alert-modal').removeClass('active');
+      });
+      
+      // Bank selection variables
+      let selectedAccount = "";
+      let selectedBank = "";
+      let selectedBankName = "";
+      let selectedLogo = "";
+      let selectedAccountName = "";
+      
+      // Payment variables
+      let paymentAmount = 0;
+      let countdownInterval;
+      let minutes = 10;
+      let seconds = 0;
+      
+      // Bank selection handler
+      $(document).on('click', '.bank-option', function() {
+        $('.bank-option').removeClass('selected');
+        $(this).addClass('selected');
+        updateSelectedAccount();
+      });
+      
+      function updateSelectedAccount() {
+        const selected = $('.bank-option.selected');
+        selectedAccount = selected.data('account');
+        selectedBank = selected.data('bank');
+        selectedBankName = selected.find('p:first-child').text();
+        selectedLogo = selected.data('logo');
+        selectedAccountName = selected.data('name');
+        
+        // Update QR button state and text based on selected bank
+        if (selectedBank === 'truemoney') {
+          $('#qr-btn').removeClass('disabled');
+          $('#qr-btn').html('<i class="fas fa-external-link-alt mr-2"></i> Open');
+        } else {
+          $('#qr-btn').removeClass('disabled');
+          $('#qr-btn').html('<i class="fas fa-qrcode mr-2"></i> QR Pay');
+        }
+      }
+      
+      // Format number with commas
+      function formatNumber(num) {
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+      
+      // Format amount input with commas
+      $('#payment-amount-input').on('input', function() {
+        let value = $(this).val().replace(/[^0-9.]/g, '');
+        let decimalSplit = value.split('.');
+        
+        // Format the integer part with commas
+        if (decimalSplit[0]) {
+          decimalSplit[0] = decimalSplit[0].replace(/\D/g, '');
+          decimalSplit[0] = formatNumber(decimalSplit[0]);
+        }
+        
+        // Only allow two decimal places
+        if (decimalSplit.length > 1) {
+          decimalSplit[1] = decimalSplit[1].replace(/\D/g, '').substring(0, 2);
+        }
+        
+        // Combine parts
+        value = decimalSplit[0];
+        if (decimalSplit.length > 1 && decimalSplit[1]) {
+          value += '.' + decimalSplit[1];
+        }
+        
+        $(this).val(value);
+      });
+      
+      // Copy button handler
+      $('#copy-btn').on('click', function() {
+        // Create temporary input element
+        const tempInput = $('<input>');
+        $('body').append(tempInput);
+        tempInput.val(selectedAccount).select();
+        document.execCommand('copy');
+        tempInput.remove();
+        
+        // Update modal message
+        $('#modal-message').text(`คัดลอกบัญชี ${selectedBankName} แล้ว`);
+        
+        // Show success modal
+        $('#success-modal').addClass('active');
+      });
+      
+      // QR button handler - updated to handle TrueMoney and PromptPay differently
+      $('#qr-btn').on('click', function() {
+        updateSelectedAccount(); // Ensure we have latest selected account
+        
+        if (selectedBank === 'truemoney') {
+          // Handle TrueMoney wallet payment
+          handleTrueMoneyPayment();
+        } else {
+          // Handle PromptPay QR payment
+          startQRPaymentProcess();
+        }
+      });
+      
+      function handleTrueMoneyPayment() {
+        // Show loading modal first
+        $('#truemoney-loading-modal').addClass('active');
+        
+        // Simulate progress
+        let progress = 0;
+        const progressInterval = setInterval(() => {
+          progress += Math.floor(Math.random() * 10) + 5;
+          if (progress > 100) progress = 100;
+          
+          $('#progress-bar').css('width', progress + '%');
+          $('#progress-bar').text(progress + '%');
+          
+          if (progress === 100) {
+            clearInterval(progressInterval);
+            
+            // Open TrueMoney app link after completion
+            setTimeout(() => {
+              $('#truemoney-loading-modal').removeClass('active');
+              window.location.href = 'https://tmn.app.link/eYSJQos4PTb';
+            }, 500);
+          }
+        }, 200);
+      }
+      
+      function startQRPaymentProcess() {
+        // Set payment details
+        $('#amount-bank-name').text(selectedBankName);
+        $('#payment-amount-input').val('');
+        
+        // Show loading modal first
+        $('#loading-message').text('Connecting');
+        $('#loading-modal').addClass('active');
+        
+        // After random 3-5 seconds, hide loading and show amount modal
+        const delay = Math.floor(Math.random() * 2000) + 3000;
+        setTimeout(() => {
+          $('#loading-modal').removeClass('active');
+          $('#amount-modal').addClass('active');
+        }, delay);
+      }
+      
+      // Confirm amount handler
+      $('#confirm-amount').on('click', function() {
+        let amountStr = $('#payment-amount-input').val().replace(/,/g, '');
+        if (!amountStr) {
+          showAlert('กรุณากรอกจำนวนเงิน', 'กรุณากรอกจำนวนเงินที่ต้องการชำระ');
+          return;
+        }
+        
+        // Convert to number
+        let amount = parseFloat(amountStr);
+        if (isNaN(amount)) {
+          showAlert('รูปแบบไม่ถูกต้อง', 'กรุณากรอกจำนวนเงินเป็นตัวเลข');
+          return;
+        }
+        
+        if (amount <= 0) {
+          showAlert('กรุณากรอกจำนวนเงิน', 'กรุณากรอกจำนวนเงินที่ต้องการชำระ');
+          return;
+        }
+        
+        if (amount < 10) {
+          showAlert('จำนวนเงินต่ำเกินไป', 'ยอดชำระขั้นต่ำ 10.00 THB');
+          return;
+        }
+        
+        if (amount > 10000) {
+          showAlert('จำนวนเงินสูงเกินไป', 'ยอดชำระสูงสุดไม่เกิน 10,000.00 THB ต่อครั้ง');
+          return;
+        }
+        
+        // Calculate random fee (0.5% - 1.99%, max 200 THB)
+        const feeRate = (Math.random() * 0.0149 + 0.005).toFixed(4);
+        let fee = amount * feeRate;
+        fee = Math.min(fee, 200); // Cap at 200 THB
+        fee = Math.round(fee * 100) / 100; // Round to 2 decimal places
+        
+        paymentAmount = amount + fee;
+        
+        // Update payment details
+        $('.formatted-number').each(function() {
+          $(this).text(formatNumber(paymentAmount.toFixed(2)));
+        });
+        $('#qr-fee').text(formatNumber(fee.toFixed(2)));
+        $('#qr-logo').attr('src', selectedLogo);
+        $('#qr-bank-name').text(selectedBankName);
+        $('#qr-account-name').text(selectedAccountName);
+        
+        // Hide amount modal and show QR generating modal
+        $('#amount-modal').removeClass('active');
+        $('#qr-generating-modal').addClass('active');
+        
+        // After random 3-5 seconds, generate QR code
+        const delay = Math.floor(Math.random() * 2000) + 3000;
+        setTimeout(() => {
+          // Generate QR code
+          const qrData = promptpayQr(selectedAccount.replace(/-/g, ''), {amount: paymentAmount});
+          const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(qrData)}&size=500x500&margin=10&qzone=1&logo=https://img2.pic.in.th/pic/1000008216.jpg`;
+          $('#promptpay-qr-img').attr('src', qrUrl);
+          
+          // Hide generating modal and show QR modal
+          $('#qr-generating-modal').removeClass('active');
+          $('#qr-modal').addClass('active');
+          
+          // Start countdown
+          startCountdown();
+        }, delay);
+      });
+      
+      // Show alert function
+      function showAlert(title, message) {
+        $('#alert-title').text(title);
+        $('#alert-message').text(message);
+        $('#amount-alert-modal').addClass('active');
+      }
+      
+      // Close alert handler
+      $('#alert-close-btn').on('click', function() {
+        $('#amount-alert-modal').removeClass('active');
+      });
+      
+      // Start countdown timer
+      function startCountdown() {
+        minutes = 10;
+        seconds = 0;
+        updateCountdownDisplay();
+        
+        clearInterval(countdownInterval);
+        countdownInterval = setInterval(() => {
+          if (seconds === 0) {
+            if (minutes === 0) {
+              clearInterval(countdownInterval);
+              return;
+            }
+            minutes--;
+            seconds = 59;
+          } else {
+            seconds--;
+          }
+          updateCountdownDisplay();
+        }, 1000);
+      }
+      
+      // Update countdown display
+      function updateCountdownDisplay() {
+        const displayMinutes = minutes.toString().padStart(2, '0');
+        const displaySeconds = seconds.toString().padStart(2, '0');
+        $('#countdown').text(`${displayMinutes}:${displaySeconds}`);
+      }
+      
+      // Paid button handler
+      $('#paid-btn').on('click', function() {
+        clearInterval(countdownInterval);
+        $('#qr-modal').removeClass('active');
+        
+        // Show payment success modal
+        $('#success-message').html(`ชำระยอดเงินจำนวน <span class="formatted-number">${paymentAmount.toFixed(2)}</span> THB สำเร็จ`);
+        $('.formatted-number').each(function() {
+          $(this).text(formatNumber($(this).text()));
+        });
+        $('#payment-success-modal').addClass('active');
+      });
+      
+      // Close modal handlers
+      $('.modal-overlay, .modal-close-btn').on('click', function() {
+        $('.modal-section').removeClass('active');
+      });
+    });
+  </script>
+</body>
+</html>
